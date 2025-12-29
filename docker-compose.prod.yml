@@ -8,21 +8,38 @@ services:
     volumes:
       - postgres_data_prod:/var/lib/postgresql/data
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Не пробрасываем порт наружу в production для безопасности
+    # ports:
+    #   - "5432:5432"
 
   web:
     build: .
     volumes:
       - static_volume:/app/static
       - media_volume:/app/media
+      - logs_volume:/app/logs
     expose:
       - 8000
     environment:
       - DJANGO_SETTINGS_MODULE=website_project.settings.prod
+      - PYTHONUNBUFFERED=1
     env_file:
       - .env.prod
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     restart: always
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/website/metrics/')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 40s
+      retries: 3
 
   nginx:
     image: nginx:alpine
@@ -41,3 +58,4 @@ volumes:
   postgres_data_prod:
   static_volume:
   media_volume:
+  logs_volume:
