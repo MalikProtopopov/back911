@@ -17,6 +17,25 @@ DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
+# Переопределение настроек базы данных после загрузки .env.prod
+# Это необходимо, так как base.py загружает .env с дефолтами
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST", "db")  # В Docker используем имя сервиса
+DB_PORT = os.getenv("DB_PORT", "5432")
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PASSWORD,
+        "HOST": DB_HOST,
+        "PORT": DB_PORT,
+    }
+}
+
 # Static files configuration for production
 # В production статика собирается в /app/static, который монтируется как volume
 # и доступен nginx для раздачи статических файлов
