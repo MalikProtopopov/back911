@@ -29,9 +29,16 @@ else
     exit 1
 fi
 
-# Остановка текущих контейнеров
+# Остановка текущих контейнеров (включая старые с другим именем)
 echo "📦 Остановка текущих контейнеров..."
 $DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml down
+
+# Остановка старых контейнеров (если есть)
+echo "🧹 Очистка старых контейнеров..."
+docker ps --filter "name=back911" --format "{{.ID}}" | xargs -r docker stop 2>/dev/null || true
+docker ps -a --filter "name=back911" --format "{{.ID}}" | xargs -r docker rm 2>/dev/null || true
+docker ps --filter "name=docker" --format "{{.ID}}" | xargs -r docker stop 2>/dev/null || true
+docker ps -a --filter "name=docker" --format "{{.ID}}" | xargs -r docker rm 2>/dev/null || true
 
 # Получение последних изменений из git (если используется)
 if [ -d .git ]; then

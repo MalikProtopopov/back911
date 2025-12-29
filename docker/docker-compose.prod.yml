@@ -1,8 +1,9 @@
+name: back911
+
 services:
   db:
     image: postgres:15-alpine
-    env_file:
-      - ../.env.prod
+    # env_file убран - используем --env-file в команде docker compose
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -38,8 +39,7 @@ services:
       # Автоматическое применение миграций при запуске (опционально)
       # Установите AUTO_MIGRATE=true в .env.prod, если хотите автоматические миграции
       - AUTO_MIGRATE=${AUTO_MIGRATE:-false}
-    env_file:
-      - ../.env.prod
+    # env_file убран - используем --env-file в команде docker compose
     depends_on:
       db:
         condition: service_healthy

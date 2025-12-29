@@ -26,6 +26,11 @@ fi
 echo "⏸️  Остановка сервисов..."
 $DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml down
 
+# Очистка старых контейнеров (если есть)
+echo "🧹 Очистка старых контейнеров..."
+docker ps --filter "name=back911" --format "{{.ID}}" | xargs -r docker stop 2>/dev/null || true
+docker ps -a --filter "name=back911" --format "{{.ID}}" | xargs -r docker rm 2>/dev/null || true
+
 # Получение последних изменений из git
 if [ -d .git ]; then
     echo "📥 Получение последних изменений из git..."
