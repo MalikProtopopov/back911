@@ -16,7 +16,7 @@ DB_HOST=db
 DB_PORT=5432
 
 # Allowed Hosts (ОБЯЗАТЕЛЬНО!)
-ALLOWED_HOSTS=your-domain.com,www.your-domain.com
+ALLOWED_HOSTS=your-domain.com,www.your-domain.com 
 
 # CORS (ОБЯЗАТЕЛЬНО!)
 CORS_ALLOWED_ORIGINS=https://your-domain.com,https://www.your-domain.com

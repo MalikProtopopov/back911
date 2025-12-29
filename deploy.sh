@@ -26,7 +26,7 @@ fi
 
 # Остановка текущих контейнеров
 echo "📦 Остановка текущих контейнеров..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml down
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml down
 
 # Получение последних изменений из git (если используется)
 if [ -d .git ]; then
@@ -36,11 +36,11 @@ fi
 
 # Пересборка образов
 echo "🔨 Пересборка Docker образов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml build --no-cache
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml build --no-cache
 
 # Запуск сервисов
 echo "▶️  Запуск сервисов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml up -d
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml up -d
 
 # Ожидание готовности базы данных
 echo "⏳ Ожидание готовности базы данных..."
@@ -48,23 +48,23 @@ sleep 10
 
 # Применение миграций
 echo "🗄️  Применение миграций базы данных..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
 
 # Сбор статики
 echo "📦 Сбор статических файлов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
 
 # Проверка статуса сервисов
 echo "✅ Проверка статуса сервисов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml ps
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml ps
 
 echo ""
 echo "🎉 Деплой завершен!"
 echo ""
 echo "📊 Полезные команды:"
-echo "  - Просмотр логов: $DOCKER_COMPOSE -f docker-compose.prod.yml logs -f"
-echo "  - Статус сервисов: $DOCKER_COMPOSE -f docker-compose.prod.yml ps"
-echo "  - Перезапуск: $DOCKER_COMPOSE -f docker-compose.prod.yml restart"
-echo "  - Остановка: $DOCKER_COMPOSE -f docker-compose.prod.yml down"
+echo "  - Просмотр логов: $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml logs -f"
+echo "  - Статус сервисов: $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml ps"
+echo "  - Перезапуск: $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml restart"
+echo "  - Остановка: $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml down"
 echo ""
 

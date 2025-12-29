@@ -19,7 +19,7 @@ fi
 
 # Остановка сервисов
 echo "⏸️  Остановка сервисов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml down
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml down
 
 # Получение последних изменений из git
 if [ -d .git ]; then
@@ -31,11 +31,11 @@ fi
 
 # Пересборка образов
 echo "🔨 Пересборка Docker образов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml build
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml build
 
 # Запуск сервисов
 echo "▶️  Запуск сервисов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml up -d
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml up -d
 
 # Ожидание готовности сервисов
 echo "⏳ Ожидание готовности сервисов..."
@@ -43,19 +43,19 @@ sleep 15
 
 # Применение миграций (если есть новые)
 echo "🗄️  Проверка и применение миграций..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
 
 # Сбор статики (если изменилась)
 echo "📦 Обновление статических файлов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
 
 # Перезапуск web сервиса для применения изменений
 echo "🔄 Перезапуск web сервиса..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml restart web
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml restart web
 
 # Проверка статуса
 echo "✅ Проверка статуса сервисов..."
-$DOCKER_COMPOSE -f docker-compose.prod.yml ps
+$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml ps
 
 echo ""
 echo "✅ Обновление завершено!"

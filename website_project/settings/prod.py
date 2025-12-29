@@ -17,6 +17,13 @@ DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
+# Static files configuration for production
+# В production статика собирается в /app/static, который монтируется как volume
+# и доступен nginx для раздачи статических файлов
+STATIC_ROOT = BASE_DIR / "static"
+# В production не используем STATICFILES_DIRS, так как все собирается в STATIC_ROOT
+STATICFILES_DIRS = []
+
 
 # CORS settings for production
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")

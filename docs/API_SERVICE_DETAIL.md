@@ -306,3 +306,4 @@ curl -X GET "http://localhost:8000/api/website/services/shinomontazh/" | python3
 **Дата создания:** 2025-12-27  
 **Статус:** ✅ Актуально
 
+

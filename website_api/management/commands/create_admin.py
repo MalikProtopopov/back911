@@ -88,3 +88,4 @@ class Command(BaseCommand):
                 self.style.ERROR(f'Ошибка при создании пользователя: {e}')
             )
 
+
