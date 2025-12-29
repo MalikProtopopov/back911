@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "911-corporate-website"
+version = "0.1.0"
+description = "REST API для корпоративного сайта 911"
+authors = ["911 Team <team@911.ru>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "5.0.3"
+djangorestframework = "^3.16.1"
+django-filter = "24.3"
+django-cors-headers = "^4.9.0"
+psycopg2-binary = "^2.9.11"
+python-slugify = "^8.0.4"
+pillow = "^12.0.0"
+python-dotenv = "^1.2.1"
+drf-spectacular = "^0.29.0"
+django-ratelimit = "^4.1.0"
+gunicorn = "^23.0.0"
+django-redis = "^5.4.0"
+django-ckeditor-5 = "^0.2.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+pytest-django = "^4.11.1"
+pytest-cov = "^7.0.0"
+black = "^25.12.0"
+flake8 = "^7.3.0"
+isort = "^7.0.0"
+ipython = "^9.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

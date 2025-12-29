@@ -1,0 +1,48 @@
+[
+  {
+    "model": "website_api.metric",
+    "pk": 1,
+    "fields": {
+      "metric_key": "total_cities",
+      "value": "82",
+      "display_label": "Городов присутствия",
+      "description": "Работаем в 82 городах России",
+      "metric_type": "platform",
+      "is_visible_on_site": true,
+      "icon_name": "map-pin",
+      "display_order": 1,
+      "last_updated": "2024-12-26T00:00:00Z"
+    }
+  },
+  {
+    "model": "website_api.metric",
+    "pk": 2,
+    "fields": {
+      "metric_key": "total_partners",
+      "value": "195",
+      "display_label": "Проверенных партнеров",
+      "description": "195 партнеров прошли верификацию",
+      "metric_type": "platform",
+      "is_visible_on_site": true,
+      "icon_name": "users",
+      "display_order": 2,
+      "last_updated": "2024-12-26T00:00:00Z"
+    }
+  },
+  {
+    "model": "website_api.metric",
+    "pk": 3,
+    "fields": {
+      "metric_key": "avg_review_rating",
+      "value": "4.84/5",
+      "display_label": "Средняя оценка",
+      "description": "Средний рейтинг по отзывам клиентов",
+      "metric_type": "platform",
+      "is_visible_on_site": true,
+      "icon_name": "star",
+      "display_order": 3,
+      "last_updated": "2024-12-26T00:00:00Z"
+    }
+  }
+]
+

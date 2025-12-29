@@ -1,0 +1,12 @@
+server.host: "0.0.0.0"
+server.shutdownTimeout: "5s"
+
+elasticsearch.hosts: [ "http://elastic_node:9200" ]
+elasticsearch.username: "test_user"
+elasticsearch.password: "StrongPassw0rd1"
+
+xpack.security.enabled: "false"
+xpack.encryptedSavedObjects.encryptionKey: "193841923471i234hk1j23h4k32hckjh3kj4h1k23j4hk123j4h12aksjflkajsdf"
+xpack.reporting.encryptionKey: "193841923471i234hk1j23h4k32hckjh3kj4h1k23j4hk123j4h12ldfasllsdjflkasdjf"
+xpack.security.encryptionKey: "ksdfkjh928393rkjehfkahlufghai8rghaskfjgha8fga7fg9af7g98fdhgkajdghkjadfhgkajdfg"
+

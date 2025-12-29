@@ -1,0 +1,51 @@
+[
+  {
+    "model": "website_api.techniccategory",
+    "pk": 1,
+    "fields": {
+      "title": "Легковой автомобиль",
+      "service_id": 1
+    }
+  },
+  {
+    "model": "website_api.techniccategory",
+    "pk": 2,
+    "fields": {
+      "title": "Грузовой автомобиль",
+      "service_id": 1
+    }
+  },
+  {
+    "model": "website_api.techniccategory",
+    "pk": 3,
+    "fields": {
+      "title": "Легковой автомобиль",
+      "service_id": 2
+    }
+  },
+  {
+    "model": "website_api.techniccategory",
+    "pk": 4,
+    "fields": {
+      "title": "Генератор",
+      "service_id": 2
+    }
+  },
+  {
+    "model": "website_api.techniccategory",
+    "pk": 5,
+    "fields": {
+      "title": "Легковой автомобиль",
+      "service_id": 3
+    }
+  },
+  {
+    "model": "website_api.techniccategory",
+    "pk": 6,
+    "fields": {
+      "title": "Грузовой автомобиль",
+      "service_id": 3
+    }
+  }
+]
+

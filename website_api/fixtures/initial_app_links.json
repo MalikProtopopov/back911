@@ -1,0 +1,51 @@
+[
+  {
+    "model": "website_api.applink",
+    "pk": 1,
+    "fields": {
+      "platform": "ios",
+      "app_type": "client",
+      "store_url": "https://apps.apple.com/ru/app/911-client",
+      "qr_code_url": "/static/images/qr/ios-client.png",
+      "version": "1.0.0",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.applink",
+    "pk": 2,
+    "fields": {
+      "platform": "android",
+      "app_type": "client",
+      "store_url": "https://play.google.com/store/apps/details?id=com.app911.client",
+      "qr_code_url": "/static/images/qr/android-client.png",
+      "version": "1.0.0",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.applink",
+    "pk": 3,
+    "fields": {
+      "platform": "ios",
+      "app_type": "partner",
+      "store_url": "https://apps.apple.com/ru/app/911-partner",
+      "qr_code_url": "/static/images/qr/ios-partner.png",
+      "version": "1.0.0",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.applink",
+    "pk": 4,
+    "fields": {
+      "platform": "android",
+      "app_type": "partner",
+      "store_url": "https://play.google.com/store/apps/details?id=com.app911.partner",
+      "qr_code_url": "/static/images/qr/android-partner.png",
+      "version": "1.0.0",
+      "is_active": true
+    }
+  }
+]
+

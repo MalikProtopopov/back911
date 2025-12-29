@@ -1,0 +1,193 @@
+version: "3.9"
+
+x-django-common: &django-common
+  build:
+    context: .
+    dockerfile: docker/Dockerfile.back
+  restart: always
+  volumes:
+    - .:/911
+  env_file:
+    - .env
+  depends_on:
+    - redis
+  networks:
+    - public_network
+    - app_network
+
+services:
+  backend_911:
+    <<: *django-common
+    container_name: django
+    command: >
+      sh -c "
+            daphne -b 0.0.0.0 -p 8888 config.asgi:application && 
+            python manage.py fill_data
+            "
+    depends_on:
+      db_postgres:
+        condition: service_healthy
+      elastic_node:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8888/api/src/utils/get-options/ || exit 1",
+        ]
+      interval: 15s
+      retries: 3
+      start_period: 30s
+      timeout: 5s
+
+  celery:
+    <<: *django-common
+    container_name: celery
+    command:
+      [
+        "celery",
+        "-A",
+        "config.celery.app",
+        "worker",
+        "--loglevel=info",
+        "--concurrency",
+        "1",
+        "-E",
+      ]
+    depends_on:
+      backend_911:
+        condition: service_healthy
+
+  beat:
+    <<: *django-common
+    container_name: beat
+    command:
+      [
+        "celery",
+        "-A",
+        "config.celery.app",
+        "beat",
+        "-l",
+        "info",
+        "-S",
+        "django",
+      ]
+    depends_on:
+      backend_911:
+        condition: service_healthy
+
+  db_postgres:
+    container_name: db_postgres
+    image: postgres:16.2-alpine
+    restart: unless-stopped
+    command: >
+      -c work_mem=128MB
+      -c maintenance_work_mem=128MB
+      -c max_wal_size=512MB
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_PORT: $POSTGRES_PORT
+    networks:
+      - app_network
+    volumes:
+      - postgres_911:/var/lib/postgresql/data/
+    healthcheck:
+      test: "bash -c 'pg_isready -U $POSTGRES_USER -d $POSTGRES_DB'"
+      interval: 5s
+      retries: 3
+      start_period: 30s
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile.nginx.prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static:/static/
+      - ./certbot/conf/:/etc/letsencrypt/:ro
+      - ./certbot/www/:/var/www/certbot/:ro
+    restart: always
+    networks:
+      - public_network
+      - app_network
+    depends_on:
+      backend_911:
+        condition: service_healthy
+
+  elastic_node:
+    image: elasticsearch:8.14.0
+    container_name: elastic_node
+    environment:
+      - discovery.type=single-node
+      - node.name=odfe-node
+      - cluster.name=es-karjewy-cluster
+      - discovery.seed_hosts=odfe-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsSL http://localhost:9200 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "10"
+    networks:
+      - app_network
+
+  redis:
+    image: redis:7.0.5-alpine
+    container_name: redis
+    volumes:
+      - redis:/data
+    networks:
+      - app_network
+    environment:
+      REDIS_PORT: $REDIS_PORT
+      REDIS_PASSWORD: $REDIS_PASSWORD
+    restart: always
+
+  certbot:
+    image: certbot/certbot:v3.0.0
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+
+volumes:
+  static:
+  media:
+  redis:
+  exchanger_data:
+  postgres_911:
+  elasticsearch_data:
+
+networks:
+  public_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
+
+  app_network:
+    driver: bridge
+    internal: true
+    driver_opts:
+      com.docker.network.driver.mtu: 1450

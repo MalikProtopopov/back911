@@ -1,0 +1,43 @@
+[
+  {
+    "model": "website_api.service",
+    "pk": 1,
+    "fields": {
+      "title": "Выездной шиномонтаж",
+      "slug": "shinomontazh",
+      "is_active": true,
+      "display_order": 1
+    }
+  },
+  {
+    "model": "website_api.service",
+    "pk": 2,
+    "fields": {
+      "title": "Доставка топлива",
+      "slug": "dostavka-topliva",
+      "is_active": true,
+      "display_order": 2
+    }
+  },
+  {
+    "model": "website_api.service",
+    "pk": 3,
+    "fields": {
+      "title": "Эвакуатор / манипулятор",
+      "slug": "evakuator",
+      "is_active": true,
+      "display_order": 3
+    }
+  },
+  {
+    "model": "website_api.service",
+    "pk": 4,
+    "fields": {
+      "title": "Автовышка",
+      "slug": "avtovyshka",
+      "is_active": true,
+      "display_order": 4
+    }
+  }
+]
+

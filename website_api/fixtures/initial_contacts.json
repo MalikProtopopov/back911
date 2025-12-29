@@ -1,0 +1,39 @@
+[
+  {
+    "model": "website_api.contact",
+    "pk": 1,
+    "fields": {
+      "contact_type": "phone",
+      "value": "+7 (999) 123-45-67",
+      "label": "Горячая линия",
+      "icon_name": "phone",
+      "is_active": true,
+      "display_order": 1
+    }
+  },
+  {
+    "model": "website_api.contact",
+    "pk": 2,
+    "fields": {
+      "contact_type": "whatsapp",
+      "value": "https://wa.me/79991234567",
+      "label": "WhatsApp",
+      "icon_name": "whatsapp",
+      "is_active": true,
+      "display_order": 2
+    }
+  },
+  {
+    "model": "website_api.contact",
+    "pk": 3,
+    "fields": {
+      "contact_type": "telegram",
+      "value": "@911_support",
+      "label": "Telegram",
+      "icon_name": "telegram",
+      "is_active": true,
+      "display_order": 3
+    }
+  }
+]
+

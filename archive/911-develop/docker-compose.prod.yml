@@ -1,0 +1,143 @@
+version: "3.9"
+
+services:
+  backend_911:
+    container_name: backend_911
+    build:
+      context: .
+      dockerfile: Dockerfile.back
+    env_file: .env
+    restart: always
+    command: >
+      sh -c "
+            daphne -b 0.0.0.0 -p 8888 config.asgi:application && 
+            python manage.py fill_data
+            "
+    depends_on:
+      database_911:
+        condition: service_started
+    networks:
+      - app_network
+    volumes:
+      - .:/911
+
+  redis_911:
+    image: redis:7.0.5-alpine
+    container_name: redis_911
+    hostname: redis
+    networks:
+      - app_network
+    env_file: .env
+    restart: always
+
+  database_911:
+    container_name: postgres_911
+    image: postgres:16.2-alpine
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - app_network
+    volumes:
+      - postgres_911:/var/lib/postgresql/data/
+
+  elastic_node:
+    image: elasticsearch:7.17.9
+    container_name: elastic_node
+    environment:
+      - discovery.type=single-node
+      - node.name=odfe-node
+      - cluster.name=es-vasya-cluster
+      - discovery.seed_hosts=odfe-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    restart: always
+    depends_on:
+      - nginx
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - app_network
+
+  nginx:
+    container_name: nginx_911
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile.nginx.prod
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - backend_911
+    volumes:
+      - static:/static/
+      - ./certbot/conf/:/etc/letsencrypt/:ro
+      - ./certbot/www/:/var/www/certbot/:ro
+    restart: always
+    networks:
+      - app_network
+    links:
+      - backend_911
+    depends_on:
+      - backend_911
+      - database_911
+
+  certbot:
+    image: certbot/certbot:v3.0.0
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.back
+    hostname: worker
+    entrypoint: celery
+    env_file: .env
+    command: -A config.celery.app worker --loglevel=info --concurrency 1 -E
+    volumes_from:
+      - backend_911
+    networks:
+      - app_network
+    links:
+      - redis_911
+    depends_on:
+      - redis_911
+    restart: always
+
+  beat:
+    build:
+      context: .
+      dockerfile: Dockerfile.back
+    hostname: worker_beat
+    entrypoint: celery
+    env_file: .env
+    command: -A config.celery.app beat -l info -S django
+    volumes:
+      - .:/911
+    volumes_from:
+      - backend_911
+    networks:
+      - app_network
+    links:
+      - redis_911
+    depends_on:
+      - redis_911
+    restart: always
+
+volumes:
+  postgres_911:
+  elasticsearch_data:
+  static:
+
+networks:
+  app_network:
