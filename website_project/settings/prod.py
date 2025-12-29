@@ -32,6 +32,10 @@ CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv("CORS_ALLOWED_ORI
 
 CORS_ALLOW_CREDENTIALS = True
 
+# API Host for building absolute URLs in pagination links
+# Используется для формирования ссылок next/previous в пагинации
+API_HOST = os.getenv("API_HOST", "45.144.221.92")
+
 
 # Security settings
 # ВАЖНО: Раскомментируйте эти настройки только после настройки HTTPS!

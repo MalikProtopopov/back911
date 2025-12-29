@@ -17,7 +17,13 @@ fi
 echo "📦 Collecting static files..."
 python manage.py collectstatic --no-input
 
-# Запуск Gunicorn
+# Если передан command как аргумент - выполняем его (для dev режима)
+if [ $# -gt 0 ]; then
+    echo "▶️  Executing custom command: $@"
+    exec "$@"
+fi
+
+# Иначе запускаем Gunicorn (для production)
 echo "▶️  Starting Gunicorn..."
 exec gunicorn website_project.wsgi:application \
     --bind 0.0.0.0:8000 \

@@ -19,7 +19,13 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: []
+    command: >
+      sh -c "
+        python manage.py migrate --no-input &&
+        python manage.py collectstatic --no-input &&
+        python manage.py runserver 0.0.0.0:8000
+      "
     ports:
       - "8001:8000"
     environment:
