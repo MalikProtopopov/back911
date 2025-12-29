@@ -25,9 +25,8 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=website_project.settings.dev
       - PYTHONUNBUFFERED=1
-    # env_file убран - используйте --env-file .env в команде или создайте .env в корне
-    # env_file:
-    #   - ../.env
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy

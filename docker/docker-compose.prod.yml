@@ -1,9 +1,10 @@
-name: back911
-
 services:
   db:
     image: postgres:15-alpine
-    # env_file убран - используем --env-file в команде docker compose
+    # env_file работает относительно docker-compose.yml файла
+    # Используем ../.env.prod так как docker-compose.yml в docker/
+    env_file:
+      - ../.env.prod
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -33,13 +34,22 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=website_project.settings.prod
       - PYTHONUNBUFFERED=1
-      # Gunicorn настройки (можно переопределить в .env.prod)
+      # Database - явно передаем переменные в контейнер
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-5432}
+      # Django settings
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG:-False}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
+      # Gunicorn настройки
       - GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
       - GUNICORN_TIMEOUT=${GUNICORN_TIMEOUT:-60}
-      # Автоматическое применение миграций при запуске (опционально)
-      # Установите AUTO_MIGRATE=true в .env.prod, если хотите автоматические миграции
+      # Автоматическое применение миграций при запуске
       - AUTO_MIGRATE=${AUTO_MIGRATE:-false}
-    # env_file убран - используем --env-file в команде docker compose
     depends_on:
       db:
         condition: service_healthy
