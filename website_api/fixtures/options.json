@@ -5,9 +5,7 @@
     "fields": {
       "title": "Устранение прокола",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -16,9 +14,7 @@
     "fields": {
       "title": "Установка колеса",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -27,9 +23,7 @@
     "fields": {
       "title": "Зарядка аккумулятора",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -38,9 +32,7 @@
     "fields": {
       "title": "Балансировка колеса",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -49,9 +41,7 @@
     "fields": {
       "title": "Установка латки",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -60,9 +50,7 @@
     "fields": {
       "title": "Перекидка готового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -71,9 +59,7 @@
     "fields": {
       "title": "Перекидка неготового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -82,9 +68,7 @@
     "fields": {
       "title": "Замена аккумулятора",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -93,9 +77,7 @@
     "fields": {
       "title": "Вскрытие авто",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -104,9 +86,7 @@
     "fields": {
       "title": "Ремонт колеса",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -115,9 +95,7 @@
     "fields": {
       "title": "Подвоз колеса",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -126,9 +104,7 @@
     "fields": {
       "title": "Диагностика авто",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -137,9 +113,7 @@
     "fields": {
       "title": "Отогрев авто",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -148,9 +122,7 @@
     "fields": {
       "title": "Бортировка колеса",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -159,9 +131,7 @@
     "fields": {
       "title": "Запуск авто",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -170,9 +140,7 @@
     "fields": {
       "title": "Буксировка",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -181,9 +149,7 @@
     "fields": {
       "title": "Замена предохранителя",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -192,9 +158,7 @@
     "fields": {
       "title": "Зачистка контактов проводов",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -203,9 +167,7 @@
     "fields": {
       "title": "Отключение сигнализации",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -214,9 +176,7 @@
     "fields": {
       "title": "Снятие секреток с кольцом",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -225,9 +185,7 @@
     "fields": {
       "title": "Снятие секреток без кольца",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -236,9 +194,7 @@
     "fields": {
       "title": "Кроссовер перекидка готового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -247,9 +203,7 @@
     "fields": {
       "title": "Кроссовер перекидка неготового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -258,9 +212,7 @@
     "fields": {
       "title": "Джип перекидка готового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -269,9 +221,7 @@
     "fields": {
       "title": "Джип перекидка неготового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -280,9 +230,7 @@
     "fields": {
       "title": "Седан перекидка готового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -291,9 +239,7 @@
     "fields": {
       "title": "Седан перекидка неготового комплекта",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -302,9 +248,7 @@
     "fields": {
       "title": "Прикурить аккумулятор",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -313,9 +257,7 @@
     "fields": {
       "title": "Вилочный погрузчик",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -324,9 +266,7 @@
     "fields": {
       "title": "Латка 13-16R",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -335,9 +275,7 @@
     "fields": {
       "title": "Латка 17R",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -346,9 +284,7 @@
     "fields": {
       "title": "Латка 18-22R",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -357,9 +293,7 @@
     "fields": {
       "title": "Ремонт замка зажигания",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -368,9 +302,7 @@
     "fields": {
       "title": "Ranflat шины",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -379,9 +311,7 @@
     "fields": {
       "title": "Буксировка 1 км",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -390,9 +320,7 @@
     "fields": {
       "title": "Буксировка 1 час",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -401,9 +329,7 @@
     "fields": {
       "title": "Подъем утопленной техники 1 час",
       "service_id": 1,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -412,9 +338,7 @@
     "fields": {
       "title": "Доставка топлива",
       "service_id": 2,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -423,9 +347,7 @@
     "fields": {
       "title": "Доставка топлива - генератор",
       "service_id": 2,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -434,9 +356,7 @@
     "fields": {
       "title": "Доставка топлива - мотоцикл",
       "service_id": 2,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -445,9 +365,7 @@
     "fields": {
       "title": "Эвакуатор",
       "service_id": 3,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -456,9 +374,7 @@
     "fields": {
       "title": "Манипулятор",
       "service_id": 3,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -467,9 +383,7 @@
     "fields": {
       "title": "Автовышка 16 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -478,9 +392,7 @@
     "fields": {
       "title": "Автовышка 20 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -489,9 +401,7 @@
     "fields": {
       "title": "Автовышка 18 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -500,9 +410,7 @@
     "fields": {
       "title": "Автовышка 40 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -511,9 +419,7 @@
     "fields": {
       "title": "Автовышка 60 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -522,9 +428,7 @@
     "fields": {
       "title": "Автовышка 25 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -533,9 +437,7 @@
     "fields": {
       "title": "Автовышка 45 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   },
   {
@@ -544,9 +446,7 @@
     "fields": {
       "title": "Автовышка 30 метров",
       "service_id": 4,
-      "is_active": true,
-      "created_at": "2025-12-29T15:03:38.574273",
-      "updated_at": "2025-12-29T15:03:38.574273"
+      "is_active": true
     }
   }
 ]
