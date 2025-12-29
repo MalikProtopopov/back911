@@ -2,6 +2,14 @@
 Production settings
 """
 
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load production environment variables from .env.prod
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+load_dotenv(BASE_DIR / '.env.prod')
+
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -37,13 +45,18 @@ X_FRAME_OPTIONS = "DENY"
 # Email backend for production
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv("EMAIL_HOST", "")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
-EMAIL_USE_TLS = True
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587") or "587")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True").lower() == "true"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 
 
 # Logging for production
+# Настройки логирования можно переопределить через переменные окружения
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+LOG_FILE_MAX_BYTES = int(os.getenv("LOG_FILE_MAX_BYTES", "10485760"))  # 10 MB по умолчанию
+LOG_FILE_BACKUP_COUNT = int(os.getenv("LOG_FILE_BACKUP_COUNT", "10"))
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -61,14 +74,14 @@ LOGGING = {
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": BASE_DIR / "logs" / "django.log",
-            "maxBytes": 1024 * 1024 * 10,  # 10 MB
-            "backupCount": 10,
+            "maxBytes": LOG_FILE_MAX_BYTES,
+            "backupCount": LOG_FILE_BACKUP_COUNT,
             "formatter": "verbose",
         },
     },
     "root": {
         "handlers": ["console", "file"],
-        "level": "INFO",
+        "level": LOG_LEVEL,
     },
     "loggers": {
         "django": {
@@ -78,7 +91,7 @@ LOGGING = {
         },
         "website_api": {
             "handlers": ["console", "file"],
-            "level": "INFO",
+            "level": LOG_LEVEL,
             "propagate": False,
         },
     },

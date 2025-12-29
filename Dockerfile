@@ -60,4 +60,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/website/metrics/')" || exit 1
 
 # Default command
-CMD ["gunicorn", "website_project.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "60"]
+# Количество workers и timeout можно переопределить через переменные окружения
+# GUNICORN_WORKERS по умолчанию 4, GUNICORN_TIMEOUT по умолчанию 60
+CMD sh -c "gunicorn website_project.wsgi:application --bind 0.0.0.0:8000 --workers ${GUNICORN_WORKERS:-4} --timeout ${GUNICORN_TIMEOUT:-60}"

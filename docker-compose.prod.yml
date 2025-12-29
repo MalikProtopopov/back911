@@ -28,6 +28,9 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=website_project.settings.prod
       - PYTHONUNBUFFERED=1
+      # Gunicorn настройки (можно переопределить в .env.prod)
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
+      - GUNICORN_TIMEOUT=${GUNICORN_TIMEOUT:-60}
     env_file:
       - .env.prod
     depends_on:

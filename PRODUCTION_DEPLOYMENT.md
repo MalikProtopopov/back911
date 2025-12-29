@@ -11,24 +11,37 @@
 SECRET_KEY=your-very-secret-key-here-min-50-characters
 DEBUG=False
 
-# Database
+# Database (ОБЯЗАТЕЛЬНО - без дефолтных значений!)
 DB_NAME=website_911_db
 DB_USER=your_db_user
 DB_PASSWORD=your_strong_db_password
 DB_HOST=db
 DB_PORT=5432
 
-# Allowed Hosts (через запятую, без пробелов)
+# Allowed Hosts (через запятую, без пробелов, ОБЯЗАТЕЛЬНО!)
 ALLOWED_HOSTS=your-domain.com,www.your-domain.com,api.your-domain.com
 
-# CORS (через запятую, без пробелов)
+# CORS (через запятую, без пробелов, ОБЯЗАТЕЛЬНО!)
 CORS_ALLOWED_ORIGINS=https://your-domain.com,https://www.your-domain.com
 
 # Email (опционально, для отправки писем)
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
+EMAIL_USE_TLS=True
 EMAIL_HOST_USER=your-email@gmail.com
 EMAIL_HOST_PASSWORD=your-app-password
+
+# Gunicorn (опционально, по умолчанию workers=4, timeout=60)
+GUNICORN_WORKERS=4
+GUNICORN_TIMEOUT=60
+
+# Logging (опционально)
+LOG_LEVEL=INFO
+LOG_FILE_MAX_BYTES=10485760
+LOG_FILE_BACKUP_COUNT=10
+
+# SSL (только после настройки HTTPS!)
+# SECURE_SSL_REDIRECT=True
 ```
 
 **⚠️ ВАЖНО:**

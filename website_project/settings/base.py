@@ -72,14 +72,22 @@ WSGI_APPLICATION = "website_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database configuration
+# В production все значения должны быть в .env.prod, дефолты только для dev
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT", "5432")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "website_911_db"),
-        "USER": os.getenv("DB_USER", "postgres"),
-        "PASSWORD": os.getenv("DB_PASSWORD", "postgres"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "5432"),
+        "NAME": DB_NAME or "website_911_db",  # Дефолт только для dev
+        "USER": DB_USER or "postgres",  # Дефолт только для dev
+        "PASSWORD": DB_PASSWORD or "postgres",  # Дефолт только для dev
+        "HOST": DB_HOST or "localhost",  # Дефолт только для dev
+        "PORT": DB_PORT,
     }
 }
 
