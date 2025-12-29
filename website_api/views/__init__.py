@@ -1,7 +1,7 @@
 """Views for website_api"""
 from .city import CityViewSet
 from .service import ServiceViewSet
-from .city_service import CityServiceView
+from .city_service import CityServiceView, CityServiceOptionsView
 from .option import OptionViewSet, TechnicCategoryViewSet
 from .advantage import AdvantageViewSet
 from .metric import MetricViewSet
@@ -14,6 +14,7 @@ __all__ = [
     'CityViewSet',
     'ServiceViewSet',
     'CityServiceView',
+    'CityServiceOptionsView',
     'OptionViewSet',
     'TechnicCategoryViewSet',
     'AdvantageViewSet',
