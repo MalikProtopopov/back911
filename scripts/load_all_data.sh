@@ -43,22 +43,14 @@ echo "✅ Static content loaded!"
 echo ""
 
 echo "🔧 Step 3: Generating dynamic content..."
-echo "   - City content"
-$PYTHON_CMD manage.py generate_content --cities
-echo "   - Service content"
-$PYTHON_CMD manage.py generate_content --services
+echo "   - Generating content for all cities and services..."
+$PYTHON_CMD manage.py generate_content
 echo "✅ Content generated!"
 echo ""
 
 echo "🔍 Step 4: Generating SEO metadata..."
-echo "   - Home page SEO"
-$PYTHON_CMD manage.py generate_seo --home
-echo "   - City pages SEO"
-$PYTHON_CMD manage.py generate_seo --cities
-echo "   - Service pages SEO"
-$PYTHON_CMD manage.py generate_seo --services
-echo "   - City-Service pages SEO"
-$PYTHON_CMD manage.py generate_seo --city-services
+echo "   - Generating SEO for all pages..."
+$PYTHON_CMD manage.py generate_seo
 echo "✅ SEO metadata generated!"
 echo ""
 
