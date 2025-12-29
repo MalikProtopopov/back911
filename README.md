@@ -13,6 +13,16 @@ REST API для корпоративного сайта 911 на Django + DRF + 
 - ✅ SEO-оптимизация для каждой страницы
 - ✅ Система заявок с UTM метками
 
+## 📁 Структура проекта
+
+Проект организован по современным практикам для удобной поддержки:
+- `docker/` - все Docker конфигурации
+- `scripts/` - скрипты автоматизации (деплой, обновление)
+- `config/` - шаблоны конфигурационных файлов
+- `docs/` - документация (включая `docs/deployment/` для деплоя)
+
+Подробнее см. [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
+
 ## 🚀 Быстрый старт (Dev)
 
 ### С Docker Compose (рекомендуется)
@@ -22,16 +32,16 @@ REST API для корпоративного сайта 911 на Django + DRF + 
 cd /Users/mak/Desktop/911_backend_website
 
 # 2. Запустите проект
-docker-compose -f docker-compose.dev.yml up -d
+docker compose -f docker/docker-compose.dev.yml up -d
 
 # 3. Применить миграции
-docker-compose -f docker-compose.dev.yml exec web python manage.py migrate
+docker compose -f docker/docker-compose.dev.yml exec web python manage.py migrate
 
 # 4. Создать суперпользователя
-docker-compose -f docker-compose.dev.yml exec web python manage.py createsuperuser
+docker compose -f docker/docker-compose.dev.yml exec web python manage.py createsuperuser
 
 # 5. Загрузить начальные данные
-docker-compose -f docker-compose.dev.yml exec web bash scripts/import_all_data.sh
+docker compose -f docker/docker-compose.dev.yml exec web bash scripts/import_all_data.sh
 ```
 
 **Примечание**: Этот скрипт импортирует ВСЕ данные из SQL дампа (82 города, услуги, опции, цены) и генерирует контент и SEO.
@@ -189,7 +199,7 @@ python manage.py import_prices --batch-size=500
 
 ```bash
 # С Docker
-docker-compose -f docker-compose.dev.yml exec web pytest
+docker compose -f docker/docker-compose.dev.yml exec web pytest
 
 # Локально
 poetry run pytest
@@ -215,8 +225,12 @@ poetry run pytest --cov=website_api
 │   ├── fixtures/            # Начальные данные
 │   └── tests/               # Тесты
 ├── docs/                    # Документация
-├── docker-compose.dev.yml   # Dev окружение
-├── docker-compose.prod.yml  # Production окружение
+├── docker/
+│   ├── Dockerfile
+│   ├── docker-compose.dev.yml   # Dev окружение
+│   ├── docker-compose.prod.yml  # Production окружение
+│   ├── nginx.conf
+│   └── entrypoint.sh
 ├── Dockerfile              # Docker образ
 ├── pyproject.toml          # Poetry зависимости
 └── README.md
@@ -229,36 +243,37 @@ poetry run pytest --cov=website_api
 cp .env .env.prod
 # Отредактировать .env.prod
 
-# 2. Запустить
-docker-compose -f docker-compose.prod.yml up -d
+# 2. Запустить (или используйте скрипт: bash scripts/deploy.sh)
+docker compose --env-file .env.prod -f docker/docker-compose.prod.yml up -d
 
-# 3. Применить миграции
-docker-compose -f docker-compose.prod.yml exec web python manage.py migrate
+# 3. Применить миграции (или используйте AUTO_MIGRATE=true в .env.prod)
+docker compose --env-file .env.prod -f docker/docker-compose.prod.yml exec web python manage.py migrate
 
-# 4. Собрать статику
-docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input
+# 4. Статика собирается автоматически через entrypoint.sh
+# Но можно собрать вручную:
+docker compose --env-file .env.prod -f docker/docker-compose.prod.yml exec web python manage.py collectstatic --no-input
 
 # 5. Создать суперпользователя
-docker-compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
+docker compose --env-file .env.prod -f docker/docker-compose.prod.yml exec web python manage.py createsuperuser
 ```
 
 ## 🔧 Управление
 
 ```bash
 # Просмотр логов
-docker-compose -f docker-compose.dev.yml logs -f web
+docker compose -f docker/docker-compose.dev.yml logs -f web
 
 # Остановить проект
-docker-compose -f docker-compose.dev.yml down
+docker compose -f docker/docker-compose.dev.yml down
 
 # Остановить и удалить volumes
-docker-compose -f docker-compose.dev.yml down -v
+docker compose -f docker/docker-compose.dev.yml down -v
 
 # Пересобрать образы
-docker-compose -f docker-compose.dev.yml build --no-cache
+docker compose -f docker/docker-compose.dev.yml build --no-cache
 
 # Выполнить команду Django
-docker-compose -f docker-compose.dev.yml exec web python manage.py <command>
+docker compose -f docker/docker-compose.dev.yml exec web python manage.py <command>
 ```
 
 ## 📝 Переменные окружения

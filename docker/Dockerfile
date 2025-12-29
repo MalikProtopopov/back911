@@ -53,11 +53,14 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Копирование кода приложения
 COPY --chown=django:django . .
 
+# Копирование entrypoint скрипта из docker/ директории
+COPY --chown=django:django docker/entrypoint.sh /app/entrypoint.sh
+
 # Создание необходимых директорий
 RUN mkdir -p /app/static /app/media /app/logs && \
     chown -R django:django /app/static /app/media /app/logs
 
-# Установка прав на выполнение для entrypoint скрипта (копируется через COPY . . выше)
+# Установка прав на выполнение для entrypoint скрипта
 RUN chmod +x /app/entrypoint.sh
 
 # Переключение на пользователя django

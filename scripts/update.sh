@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # Скрипт для обновления проекта на production сервере
-# Использование: ./update.sh
+# Использование: ./scripts/update.sh или из корня проекта: bash scripts/update.sh
 
 set -e  # Остановка при ошибке
+
+# Переход в корневую директорию проекта (откуда запущен скрипт)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$PROJECT_ROOT"
 
 echo "🔄 Обновление проекта 911 Backend..."
 
@@ -19,7 +24,7 @@ fi
 
 # Остановка сервисов
 echo "⏸️  Остановка сервисов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml down
+$DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml down
 
 # Получение последних изменений из git
 if [ -d .git ]; then
@@ -31,11 +36,11 @@ fi
 
 # Пересборка образов
 echo "🔨 Пересборка Docker образов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml build
+$DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml build
 
 # Запуск сервисов
 echo "▶️  Запуск сервисов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml up -d
+$DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml up -d
 
 # Ожидание готовности сервисов
 echo "⏳ Ожидание готовности сервисов..."
@@ -45,7 +50,7 @@ sleep 15
 # Если AUTO_MIGRATE=true, миграции применятся автоматически при перезапуске
 if ! grep -q "AUTO_MIGRATE=true" .env.prod 2>/dev/null; then
     echo "🗄️  Проверка и применение миграций..."
-    $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+    $DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml exec -T web python manage.py migrate --no-input
 else
     echo "ℹ️  Миграции будут применены автоматически при перезапуске (AUTO_MIGRATE=true)"
 fi
@@ -56,11 +61,11 @@ echo "ℹ️  Статические файлы собираются автом�
 # Перезапуск web сервиса для применения изменений
 # При перезапуске entrypoint.sh автоматически соберет статику
 echo "🔄 Перезапуск web сервиса..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml restart web
+$DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml restart web
 
 # Проверка статуса
 echo "✅ Проверка статуса сервисов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml ps
+$DOCKER_COMPOSE --env-file .env.prod -f docker/docker-compose.prod.yml ps
 
 echo ""
 echo "✅ Обновление завершено!"
