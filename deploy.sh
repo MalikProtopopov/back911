@@ -46,13 +46,17 @@ $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml up -d
 echo "⏳ Ожидание готовности базы данных..."
 sleep 10
 
-# Применение миграций
-echo "🗄️  Применение миграций базы данных..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+# Применение миграций (если AUTO_MIGRATE не включен в .env.prod)
+# Если AUTO_MIGRATE=true, миграции применятся автоматически при запуске контейнера
+if ! grep -q "AUTO_MIGRATE=true" .env.prod 2>/dev/null; then
+    echo "🗄️  Применение миграций базы данных..."
+    $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+else
+    echo "ℹ️  Миграции будут применены автоматически при запуске (AUTO_MIGRATE=true)"
+fi
 
-# Сбор статики
-echo "📦 Сбор статических файлов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
+# Статика теперь собирается автоматически при запуске контейнера через entrypoint.sh
+echo "ℹ️  Статические файлы собираются автоматически при запуске контейнера"
 
 # Проверка статуса сервисов
 echo "✅ Проверка статуса сервисов..."

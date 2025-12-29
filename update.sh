@@ -41,15 +41,20 @@ $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml up -d
 echo "⏳ Ожидание готовности сервисов..."
 sleep 15
 
-# Применение миграций (если есть новые)
-echo "🗄️  Проверка и применение миграций..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+# Применение миграций (если AUTO_MIGRATE не включен в .env.prod)
+# Если AUTO_MIGRATE=true, миграции применятся автоматически при перезапуске
+if ! grep -q "AUTO_MIGRATE=true" .env.prod 2>/dev/null; then
+    echo "🗄️  Проверка и применение миграций..."
+    $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py migrate --no-input
+else
+    echo "ℹ️  Миграции будут применены автоматически при перезапуске (AUTO_MIGRATE=true)"
+fi
 
-# Сбор статики (если изменилась)
-echo "📦 Обновление статических файлов..."
-$DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml exec -T web python manage.py collectstatic --no-input
+# Статика собирается автоматически при запуске контейнера через entrypoint.sh
+echo "ℹ️  Статические файлы собираются автоматически при перезапуске"
 
 # Перезапуск web сервиса для применения изменений
+# При перезапуске entrypoint.sh автоматически соберет статику
 echo "🔄 Перезапуск web сервиса..."
 $DOCKER_COMPOSE --env-file .env.prod -f docker-compose.prod.yml restart web
 

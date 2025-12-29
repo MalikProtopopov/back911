@@ -57,6 +57,9 @@ COPY --chown=django:django . .
 RUN mkdir -p /app/static /app/media /app/logs && \
     chown -R django:django /app/static /app/media /app/logs
 
+# Установка прав на выполнение для entrypoint скрипта (копируется через COPY . . выше)
+RUN chmod +x /app/entrypoint.sh
+
 # Переключение на пользователя django
 USER django
 
@@ -67,7 +70,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/website/metrics/')" || exit 1
 
-# Default command
-# Количество workers и timeout можно переопределить через переменные окружения
-# GUNICORN_WORKERS по умолчанию 4, GUNICORN_TIMEOUT по умолчанию 60
-CMD sh -c "gunicorn website_project.wsgi:application --bind 0.0.0.0:8000 --workers ${GUNICORN_WORKERS:-4} --timeout ${GUNICORN_TIMEOUT:-60}"
+# Entrypoint скрипт будет автоматически собирать статику перед запуском
+ENTRYPOINT ["/app/entrypoint.sh"]

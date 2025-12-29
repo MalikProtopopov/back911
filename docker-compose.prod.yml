@@ -33,6 +33,9 @@ services:
       # Gunicorn настройки (можно переопределить в .env.prod)
       - GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
       - GUNICORN_TIMEOUT=${GUNICORN_TIMEOUT:-60}
+      # Автоматическое применение миграций при запуске (опционально)
+      # Установите AUTO_MIGRATE=true в .env.prod, если хотите автоматические миграции
+      - AUTO_MIGRATE=${AUTO_MIGRATE:-false}
     env_file:
       - .env.prod
     depends_on:
