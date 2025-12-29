@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
-from website_api.models import City, Service, Option, SeoMeta, ServiceContent
+from website_api.models import City, Service, Option, SeoMeta, ServiceContent, TechnicCategory
 from website_api.serializers import (
     CityListSerializer,
     ServiceListSerializer,
@@ -51,7 +51,8 @@ class CityServiceView(APIView):
         3. **options** - опции с ценами для этого города:
            - Только активные опции (is_active=True)
            - Только опции с установленными ценами в данном городе
-           - Каждая опция включает массив цен по категориям техники
+           - Каждая опция включает массив цен (`prices`) для всех категорий техники в данном городе
+           - Если у опции несколько цен с разными категориями, опция будет показана в каждой соответствующей категории
            
         4. **content** - HTML контент для страницы:
            - Приоритет отдается контенту специфичному для города
@@ -173,4 +174,136 @@ class CityServiceView(APIView):
         }
         
         return Response(data)
+
+
+class CityServiceOptionsView(APIView):
+    """
+    API endpoint для получения опций услуги в конкретном городе с фильтрацией по категории техники.
+    
+    Возвращает только активные опции с ценами в указанном городе.
+    Поддерживает фильтрацию по категории техники.
+    """
+    
+    @extend_schema(
+        summary="Опции услуги в городе с фильтрацией",
+        description="""
+        Получить список опций услуги в конкретном городе с возможностью фильтрации по категории техники.
+        
+        **Возвращает только активные опции с ценами в указанном городе.**
+        
+        **Опциональные параметры:**
+        - `technic_category` - ID категории техники для фильтрации цен (например, `1`)
+        - `technic_category__title` - название категории техники для фильтрации цен (например, `Грузовой автомобиль`)
+        
+        **Если указана категория техники:**
+        - Возвращаются только опции, у которых есть цены для этой категории
+        - В массиве `prices` каждой опции будут только цены для указанной категории
+        
+        **Если категория не указана:**
+        - Возвращаются все опции с ценами в данном городе
+        - В массиве `prices` каждой опции будут все цены для всех категорий техники
+        
+        **Примеры запросов:**
+        - `/api/website/cities/moskva/services/shinomontazh/options/` - все опции шиномонтажа в Москве
+        - `/api/website/cities/moskva/services/shinomontazh/options/?technic_category=1` - опции шиномонтажа в Москве для категории техники с ID=1
+        - `/api/website/cities/moskva/services/shinomontazh/options/?technic_category__title=Грузовой автомобиль` - опции шиномонтажа в Москве для грузовых автомобилей
+        """,
+        tags=["Город + Услуга"],
+        parameters=[
+            OpenApiParameter(
+                name='city_slug',
+                type=str,
+                location=OpenApiParameter.PATH,
+                description='Slug города (например: moskva, sankt-peterburg)',
+                required=True,
+            ),
+            OpenApiParameter(
+                name='service_slug',
+                type=str,
+                location=OpenApiParameter.PATH,
+                description='Slug услуги (например: shinomontazh, evakuator)',
+                required=True,
+            ),
+            OpenApiParameter(
+                name='technic_category',
+                type=int,
+                location=OpenApiParameter.QUERY,
+                description='ID категории техники для фильтрации цен (опционально)',
+                required=False,
+            ),
+            OpenApiParameter(
+                name='technic_category__title',
+                type=str,
+                location=OpenApiParameter.QUERY,
+                description='Название категории техники для фильтрации цен (опционально)',
+                required=False,
+            ),
+        ],
+        responses={
+            200: {
+                'type': 'array',
+                'description': 'Массив опций с ценами для данного города и услуги'
+            },
+            404: {
+                'description': 'Город или услуга не найдены / неактивны'
+            }
+        }
+    )
+    def get(self, request, city_slug, service_slug):
+        """Получить опции услуги в городе с фильтрацией по категории техники"""
+        city = get_object_or_404(City, slug=city_slug, is_active=True)
+        service = get_object_or_404(Service, slug=service_slug, is_active=True)
+        
+        technic_category_id = request.query_params.get('technic_category')
+        technic_category_title = request.query_params.get('technic_category__title')
+        
+        # Get options available in this city
+        options = Option.objects.filter(
+            service=service,
+            is_active=True,
+        ).prefetch_related(
+            'prices',
+            'prices__city',
+            'prices__technic_category',
+        )
+        
+        # Filter options that have prices in this city
+        options_with_prices = [
+            opt for opt in options 
+            if opt.prices.filter(city=city).exists()
+        ]
+        
+        # Подготовка контекста для сериализатора
+        context = {'city': city}
+        
+        # Если указана категория техники, добавляем в контекст для фильтрации цен
+        if technic_category_id:
+            try:
+                technic_category = TechnicCategory.objects.get(id=technic_category_id)
+                context['technic_category'] = technic_category
+                # Дополнительно фильтруем опции - оставляем только те, у которых есть цены для этой категории
+                options_with_prices = [
+                    opt for opt in options_with_prices
+                    if opt.prices.filter(city=city, technic_category=technic_category).exists()
+                ]
+            except TechnicCategory.DoesNotExist:
+                pass
+        elif technic_category_title:
+            try:
+                technic_category = TechnicCategory.objects.get(title=technic_category_title)
+                context['technic_category'] = technic_category
+                # Дополнительно фильтруем опции - оставляем только те, у которых есть цены для этой категории
+                options_with_prices = [
+                    opt for opt in options_with_prices
+                    if opt.prices.filter(city=city, technic_category=technic_category).exists()
+                ]
+            except TechnicCategory.DoesNotExist:
+                pass
+        
+        serializer = OptionWithCityPriceSerializer(
+            options_with_prices, 
+            many=True,
+            context=context
+        )
+        return Response(serializer.data)
 

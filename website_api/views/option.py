@@ -124,15 +124,20 @@ class OptionViewSet(viewsets.ReadOnlyModelViewSet):
         
         **Опциональные параметры:**
         - `service` - slug услуги для фильтрации (например, `shinomontazh`)
+        - `technic_category` - ID категории техники для фильтрации цен (например, `1`)
+        - `technic_category__title` - название категории техники для фильтрации (например, `Грузовой автомобиль`)
         
         **Возвращает только активные опции с ценами в указанном городе.**
         
         **Примеры запросов:**
         - `/api/website/options/by-city/?city=moskva` - все опции в Москве
         - `/api/website/options/by-city/?city=moskva&service=shinomontazh` - опции шиномонтажа в Москве
+        - `/api/website/options/by-city/?city=moskva&service=shinomontazh&technic_category=1` - опции шиномонтажа в Москве для категории техники с ID=1
+        - `/api/website/options/by-city/?city=moskva&service=shinomontazh&technic_category__title=Грузовой автомобиль` - опции шиномонтажа в Москве для грузовых автомобилей
         
         **Цены:**
         Для каждой опции возвращается массив цен по категориям техники (если применимо).
+        Если указан фильтр `technic_category`, возвращаются только цены для этой категории.
         Если опция имеет фиксированную цену, возвращается одна цена без категории.
         """,
         tags=["Опции услуг"],
@@ -151,6 +156,20 @@ class OptionViewSet(viewsets.ReadOnlyModelViewSet):
                 description='Slug услуги для фильтрации (опционально)',
                 required=False,
             ),
+            OpenApiParameter(
+                name='technic_category',
+                type=int,
+                location=OpenApiParameter.QUERY,
+                description='ID категории техники для фильтрации цен (опционально)',
+                required=False,
+            ),
+            OpenApiParameter(
+                name='technic_category__title',
+                type=str,
+                location=OpenApiParameter.QUERY,
+                description='Название категории техники для фильтрации цен (опционально)',
+                required=False,
+            ),
         ],
     )
     @action(detail=False, methods=['get'], url_path='by-city')
@@ -158,6 +177,8 @@ class OptionViewSet(viewsets.ReadOnlyModelViewSet):
         """Получить опции с ценами для конкретного города"""
         city_slug = request.query_params.get('city')
         service_slug = request.query_params.get('service')
+        technic_category_id = request.query_params.get('technic_category')
+        technic_category_title = request.query_params.get('technic_category__title')
         
         if not city_slug:
             return Response(
@@ -178,10 +199,27 @@ class OptionViewSet(viewsets.ReadOnlyModelViewSet):
         if service_slug:
             queryset = queryset.filter(service__slug=service_slug)
         
+        # Подготовка контекста для сериализатора
+        context = {'city': city}
+        
+        # Если указана категория техники, добавляем в контекст для фильтрации цен
+        if technic_category_id:
+            try:
+                technic_category = TechnicCategory.objects.get(id=technic_category_id)
+                context['technic_category'] = technic_category
+            except TechnicCategory.DoesNotExist:
+                pass
+        elif technic_category_title:
+            try:
+                technic_category = TechnicCategory.objects.get(title=technic_category_title)
+                context['technic_category'] = technic_category
+            except TechnicCategory.DoesNotExist:
+                pass
+        
         serializer = OptionWithCityPriceSerializer(
             queryset, 
             many=True,
-            context={'city': city}
+            context=context
         )
         return Response(serializer.data)
 

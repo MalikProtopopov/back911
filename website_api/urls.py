@@ -5,6 +5,7 @@ from website_api.views import (
     CityViewSet,
     ServiceViewSet,
     CityServiceView,
+    CityServiceOptionsView,
     OptionViewSet,
     TechnicCategoryViewSet,
     AdvantageViewSet,
@@ -29,13 +30,18 @@ router.register(r'seo-meta', SeoMetaViewSet, basename='seo-meta')
 router.register(r'leads', LeadViewSet, basename='lead')
 
 urlpatterns = [
-    # Router URLs
-    path('', include(router.urls)),
-    
-    # Custom endpoints
+    # Custom endpoints (должны быть ДО router.urls, чтобы не перехватывались ViewSet'ами)
+    path(
+        'cities/<slug:city_slug>/services/<slug:service_slug>/options/',
+        CityServiceOptionsView.as_view(),
+        name='city-service-options'
+    ),
     path(
         'cities/<slug:city_slug>/services/<slug:service_slug>/',
         CityServiceView.as_view(),
         name='city-service'
     ),
+    
+    # Router URLs (в конце, чтобы не перехватывать кастомные пути)
+    path('', include(router.urls)),
 ]

@@ -63,10 +63,10 @@ class OptionDetailSerializer(serializers.ModelSerializer):
 
 
 class OptionWithCityPriceSerializer(serializers.ModelSerializer):
-    """Option serializer with price for specific city"""
+    """Option serializer with prices for specific city (all prices for all technic categories)"""
     service_title = serializers.CharField(source='service.title', read_only=True)
     service_slug = serializers.CharField(source='service.slug', read_only=True)
-    price = serializers.SerializerMethodField()
+    prices = serializers.SerializerMethodField()
     
     class Meta:
         model = Option
@@ -77,27 +77,30 @@ class OptionWithCityPriceSerializer(serializers.ModelSerializer):
             'service_title',
             'service_slug',
             'is_active',
-            'price',
+            'prices',
         ]
     
-    def get_price(self, obj):
-        """Get price for the city from context"""
+    def get_prices(self, obj):
+        """Get prices for the city from context, optionally filtered by technic category"""
         city = self.context.get('city')
         technic_category = self.context.get('technic_category')
         
         if not city:
-            return None
+            return []
         
-        price_query = obj.prices.filter(city=city)
+        # Get prices for this option in this city
+        prices = obj.prices.filter(city=city).select_related('technic_category')
         
+        # If technic category is specified in context, filter by it
         if technic_category:
-            price_query = price_query.filter(technic_category=technic_category)
+            prices = prices.filter(technic_category=technic_category)
         
-        price = price_query.first()
-        if price:
-            return {
+        result = []
+        for price in prices:
+            result.append({
                 'amount': str(price.amount),
                 'technic_category': price.technic_category.title if price.technic_category else None
-            }
-        return None
+            })
+        
+        return result
 
