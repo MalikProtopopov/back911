@@ -1,85 +1,986 @@
 [
-  {"model": "website_api.city", "pk": 34, "fields": {"title": "Москва", "slug": "moskva", "is_active": true, "display_order": 1}},
-  {"model": "website_api.city", "pk": 79, "fields": {"title": "Санкт Петербург", "slug": "sankt-peterburg", "is_active": true, "display_order": 2}},
-  {"model": "website_api.city", "pk": 35, "fields": {"title": "Казань", "slug": "kazan", "is_active": true, "display_order": 3}},
-  {"model": "website_api.city", "pk": 46, "fields": {"title": "Краснодар", "slug": "krasnodar", "is_active": true, "display_order": 4}},
-  {"model": "website_api.city", "pk": 19, "fields": {"title": "Екатеринбург", "slug": "ekaterinburg", "is_active": true, "display_order": 5}},
-  {"model": "website_api.city", "pk": 65, "fields": {"title": "Новосибирск", "slug": "novosibirsk", "is_active": true, "display_order": 6}},
-  {"model": "website_api.city", "pk": 56, "fields": {"title": "Нижний Новгород", "slug": "nizhnij-novgorod", "is_active": true, "display_order": 7}},
-  {"model": "website_api.city", "pk": 5, "fields": {"title": "Адлер", "slug": "adler", "is_active": true, "display_order": 8}},
-  {"model": "website_api.city", "pk": 3, "fields": {"title": "Архангельск", "slug": "arhangelsk", "is_active": true, "display_order": 9}},
-  {"model": "website_api.city", "pk": 43, "fields": {"title": "Армавир", "slug": "armavir", "is_active": true, "display_order": 10}},
-  {"model": "website_api.city", "pk": 2, "fields": {"title": "Астрахань", "slug": "astrahan", "is_active": true, "display_order": 11}},
-  {"model": "website_api.city", "pk": 31, "fields": {"title": "Барнаул", "slug": "barnaul", "is_active": true, "display_order": 12}},
-  {"model": "website_api.city", "pk": 32, "fields": {"title": "Белгород", "slug": "belgorod", "is_active": true, "display_order": 13}},
-  {"model": "website_api.city", "pk": 44, "fields": {"title": "Благовещенск", "slug": "blagoveshchensk", "is_active": true, "display_order": 14}},
-  {"model": "website_api.city", "pk": 80, "fields": {"title": "Брянск", "slug": "bryansk", "is_active": true, "display_order": 15}},
-  {"model": "website_api.city", "pk": 6, "fields": {"title": "Великий Новгород", "slug": "velikij-novgorod", "is_active": true, "display_order": 16}},
-  {"model": "website_api.city", "pk": 83, "fields": {"title": "Владимир", "slug": "vladimir", "is_active": true, "display_order": 17}},
-  {"model": "website_api.city", "pk": 87, "fields": {"title": "Владивосток", "slug": "vladivostok", "is_active": true, "display_order": 18}},
-  {"model": "website_api.city", "pk": 21, "fields": {"title": "Волгоград", "slug": "volgograd", "is_active": true, "display_order": 19}},
-  {"model": "website_api.city", "pk": 22, "fields": {"title": "Волгодонск", "slug": "volgodonsk", "is_active": true, "display_order": 20}},
-  {"model": "website_api.city", "pk": 77, "fields": {"title": "Вологда", "slug": "vologda", "is_active": true, "display_order": 21}},
-  {"model": "website_api.city", "pk": 4, "fields": {"title": "Воронеж", "slug": "voronezh", "is_active": true, "display_order": 22}},
-  {"model": "website_api.city", "pk": 41, "fields": {"title": "Дагестанские огни", "slug": "dagestanskie-ogni", "is_active": true, "display_order": 23}},
-  {"model": "website_api.city", "pk": 40, "fields": {"title": "Дербент", "slug": "derbent", "is_active": true, "display_order": 24}},
-  {"model": "website_api.city", "pk": 71, "fields": {"title": "Зеленоград", "slug": "zelenograd", "is_active": true, "display_order": 25}},
-  {"model": "website_api.city", "pk": 7, "fields": {"title": "Иваново", "slug": "ivanovo", "is_active": true, "display_order": 26}},
-  {"model": "website_api.city", "pk": 8, "fields": {"title": "Ижевск", "slug": "izhevsk", "is_active": true, "display_order": 27}},
-  {"model": "website_api.city", "pk": 10, "fields": {"title": "Калуга", "slug": "kaluga", "is_active": true, "display_order": 28}},
-  {"model": "website_api.city", "pk": 37, "fields": {"title": "Калининград", "slug": "kaliningrad", "is_active": true, "display_order": 29}},
-  {"model": "website_api.city", "pk": 30, "fields": {"title": "Каспийск", "slug": "kaspijsk", "is_active": true, "display_order": 30}},
-  {"model": "website_api.city", "pk": 9, "fields": {"title": "Кемерово", "slug": "kemerovo", "is_active": true, "display_order": 31}},
-  {"model": "website_api.city", "pk": 38, "fields": {"title": "Керчь", "slug": "kerch", "is_active": true, "display_order": 32}},
-  {"model": "website_api.city", "pk": 82, "fields": {"title": "Кизляр", "slug": "kizlyar", "is_active": true, "display_order": 33}},
-  {"model": "website_api.city", "pk": 75, "fields": {"title": "Киров", "slug": "kirov", "is_active": true, "display_order": 34}},
-  {"model": "website_api.city", "pk": 85, "fields": {"title": "Коломна", "slug": "kolomna", "is_active": true, "display_order": 35}},
-  {"model": "website_api.city", "pk": 27, "fields": {"title": "Красная Поляна", "slug": "krasnaya-polyana", "is_active": true, "display_order": 36}},
-  {"model": "website_api.city", "pk": 51, "fields": {"title": "Красноярск", "slug": "krasnoyarsk", "is_active": true, "display_order": 37}},
-  {"model": "website_api.city", "pk": 12, "fields": {"title": "Лакинск", "slug": "lakinsk", "is_active": true, "display_order": 38}},
-  {"model": "website_api.city", "pk": 11, "fields": {"title": "Липецк", "slug": "lipetsk", "is_active": true, "display_order": 39}},
-  {"model": "website_api.city", "pk": 72, "fields": {"title": "Магнитогорск", "slug": "magnitogorsk", "is_active": true, "display_order": 40}},
-  {"model": "website_api.city", "pk": 1, "fields": {"title": "Махачкала", "slug": "mahachkala", "is_active": true, "display_order": 41}},
-  {"model": "website_api.city", "pk": 42, "fields": {"title": "Минеральные Воды", "slug": "mineralnye-vody", "is_active": true, "display_order": 42}},
-  {"model": "website_api.city", "pk": 63, "fields": {"title": "Нальчик", "slug": "nalchik", "is_active": true, "display_order": 43}},
-  {"model": "website_api.city", "pk": 57, "fields": {"title": "Невинномысск", "slug": "nevinnomyssk", "is_active": true, "display_order": 44}},
-  {"model": "website_api.city", "pk": 29, "fields": {"title": "Новодвинск", "slug": "novodvinsk", "is_active": true, "display_order": 45}},
-  {"model": "website_api.city", "pk": 20, "fields": {"title": "Обнинск", "slug": "obninsk", "is_active": true, "display_order": 46}},
-  {"model": "website_api.city", "pk": 81, "fields": {"title": "Омск", "slug": "omsk", "is_active": true, "display_order": 47}},
-  {"model": "website_api.city", "pk": 84, "fields": {"title": "Орел", "slug": "orel", "is_active": true, "display_order": 48}},
-  {"model": "website_api.city", "pk": 52, "fields": {"title": "Оренбург", "slug": "orenburg", "is_active": true, "display_order": 49}},
-  {"model": "website_api.city", "pk": 28, "fields": {"title": "Пенза", "slug": "penza", "is_active": true, "display_order": 50}},
-  {"model": "website_api.city", "pk": 13, "fields": {"title": "Пермь", "slug": "perm", "is_active": true, "display_order": 51}},
-  {"model": "website_api.city", "pk": 25, "fields": {"title": "Петрозаводск", "slug": "petrozavodsk", "is_active": true, "display_order": 52}},
-  {"model": "website_api.city", "pk": 86, "fields": {"title": "Псков", "slug": "pskov", "is_active": true, "display_order": 53}},
-  {"model": "website_api.city", "pk": 39, "fields": {"title": "Пятигорск", "slug": "pyatigorsk", "is_active": true, "display_order": 54}},
-  {"model": "website_api.city", "pk": 47, "fields": {"title": "Ростов на дону", "slug": "rostov-na-donu", "is_active": true, "display_order": 55}},
-  {"model": "website_api.city", "pk": 14, "fields": {"title": "Рязань", "slug": "ryazan", "is_active": true, "display_order": 56}},
-  {"model": "website_api.city", "pk": 54, "fields": {"title": "Самара", "slug": "samara", "is_active": true, "display_order": 57}},
-  {"model": "website_api.city", "pk": 16, "fields": {"title": "Саранск", "slug": "saransk", "is_active": true, "display_order": 58}},
-  {"model": "website_api.city", "pk": 49, "fields": {"title": "Саратов", "slug": "saratov", "is_active": true, "display_order": 59}},
-  {"model": "website_api.city", "pk": 55, "fields": {"title": "Севастополь", "slug": "sevastopol", "is_active": true, "display_order": 60}},
-  {"model": "website_api.city", "pk": 24, "fields": {"title": "Северодвинск", "slug": "severodvinsk", "is_active": true, "display_order": 61}},
-  {"model": "website_api.city", "pk": 68, "fields": {"title": "Симферополь", "slug": "simferopol", "is_active": true, "display_order": 62}},
-  {"model": "website_api.city", "pk": 48, "fields": {"title": "Смоленск", "slug": "smolensk", "is_active": true, "display_order": 63}},
-  {"model": "website_api.city", "pk": 26, "fields": {"title": "Сочи", "slug": "sochi", "is_active": true, "display_order": 64}},
-  {"model": "website_api.city", "pk": 66, "fields": {"title": "Ставрополь", "slug": "stavropol", "is_active": true, "display_order": 65}},
-  {"model": "website_api.city", "pk": 15, "fields": {"title": "Суздаль", "slug": "suzdal", "is_active": true, "display_order": 66}},
-  {"model": "website_api.city", "pk": 36, "fields": {"title": "Сургут", "slug": "surgut", "is_active": true, "display_order": 67}},
-  {"model": "website_api.city", "pk": 62, "fields": {"title": "Таганрог", "slug": "taganrog", "is_active": true, "display_order": 68}},
-  {"model": "website_api.city", "pk": 78, "fields": {"title": "Тамань", "slug": "taman", "is_active": true, "display_order": 69}},
-  {"model": "website_api.city", "pk": 17, "fields": {"title": "Тамбов", "slug": "tambov", "is_active": true, "display_order": 70}},
-  {"model": "website_api.city", "pk": 76, "fields": {"title": "Тверь", "slug": "tver", "is_active": true, "display_order": 71}},
-  {"model": "website_api.city", "pk": 74, "fields": {"title": "Тольятти", "slug": "tolyatti", "is_active": true, "display_order": 72}},
-  {"model": "website_api.city", "pk": 89, "fields": {"title": "Томск", "slug": "tomsk", "is_active": true, "display_order": 73}},
-  {"model": "website_api.city", "pk": 64, "fields": {"title": "Тюмень", "slug": "tyumen", "is_active": true, "display_order": 74}},
-  {"model": "website_api.city", "pk": 53, "fields": {"title": "Ульяновск", "slug": "ulyanovsk", "is_active": true, "display_order": 75}},
-  {"model": "website_api.city", "pk": 18, "fields": {"title": "Уфа", "slug": "ufa", "is_active": true, "display_order": 76}},
-  {"model": "website_api.city", "pk": 73, "fields": {"title": "Хабаровск", "slug": "habarovsk", "is_active": true, "display_order": 77}},
-  {"model": "website_api.city", "pk": 88, "fields": {"title": "Хасавюрт", "slug": "hasavyurt", "is_active": true, "display_order": 78}},
-  {"model": "website_api.city", "pk": 45, "fields": {"title": "Чебоксары", "slug": "cheboksary", "is_active": true, "display_order": 79}},
-  {"model": "website_api.city", "pk": 67, "fields": {"title": "Челябинск", "slug": "chelyabinsk", "is_active": true, "display_order": 80}},
-  {"model": "website_api.city", "pk": 58, "fields": {"title": "Чита", "slug": "chita", "is_active": true, "display_order": 81}},
-  {"model": "website_api.city", "pk": 23, "fields": {"title": "Ярославль", "slug": "yaroslavl", "is_active": true, "display_order": 82}}
+  {
+    "model": "website_api.city",
+    "pk": 34,
+    "fields": {
+      "title": "Москва",
+      "slug": "moskva",
+      "is_active": true,
+      "display_order": 1,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 79,
+    "fields": {
+      "title": "Санкт Петербург",
+      "slug": "sankt-peterburg",
+      "is_active": true,
+      "display_order": 2,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 35,
+    "fields": {
+      "title": "Казань",
+      "slug": "kazan",
+      "is_active": true,
+      "display_order": 3,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 46,
+    "fields": {
+      "title": "Краснодар",
+      "slug": "krasnodar",
+      "is_active": true,
+      "display_order": 4,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 19,
+    "fields": {
+      "title": "Екатеринбург",
+      "slug": "ekaterinburg",
+      "is_active": true,
+      "display_order": 5,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 65,
+    "fields": {
+      "title": "Новосибирск",
+      "slug": "novosibirsk",
+      "is_active": true,
+      "display_order": 6,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 56,
+    "fields": {
+      "title": "Нижний Новгород",
+      "slug": "nizhnij-novgorod",
+      "is_active": true,
+      "display_order": 7,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 5,
+    "fields": {
+      "title": "Адлер",
+      "slug": "adler",
+      "is_active": true,
+      "display_order": 8,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 3,
+    "fields": {
+      "title": "Архангельск",
+      "slug": "arhangelsk",
+      "is_active": true,
+      "display_order": 9,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 43,
+    "fields": {
+      "title": "Армавир",
+      "slug": "armavir",
+      "is_active": true,
+      "display_order": 10,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 2,
+    "fields": {
+      "title": "Астрахань",
+      "slug": "astrahan",
+      "is_active": true,
+      "display_order": 11,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 31,
+    "fields": {
+      "title": "Барнаул",
+      "slug": "barnaul",
+      "is_active": true,
+      "display_order": 12,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 32,
+    "fields": {
+      "title": "Белгород",
+      "slug": "belgorod",
+      "is_active": true,
+      "display_order": 13,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 44,
+    "fields": {
+      "title": "Благовещенск",
+      "slug": "blagoveshchensk",
+      "is_active": true,
+      "display_order": 14,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 80,
+    "fields": {
+      "title": "Брянск",
+      "slug": "bryansk",
+      "is_active": true,
+      "display_order": 15,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 6,
+    "fields": {
+      "title": "Великий Новгород",
+      "slug": "velikij-novgorod",
+      "is_active": true,
+      "display_order": 16,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 83,
+    "fields": {
+      "title": "Владимир",
+      "slug": "vladimir",
+      "is_active": true,
+      "display_order": 17,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 87,
+    "fields": {
+      "title": "Владивосток",
+      "slug": "vladivostok",
+      "is_active": true,
+      "display_order": 18,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 21,
+    "fields": {
+      "title": "Волгоград",
+      "slug": "volgograd",
+      "is_active": true,
+      "display_order": 19,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 22,
+    "fields": {
+      "title": "Волгодонск",
+      "slug": "volgodonsk",
+      "is_active": true,
+      "display_order": 20,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 77,
+    "fields": {
+      "title": "Вологда",
+      "slug": "vologda",
+      "is_active": true,
+      "display_order": 21,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 4,
+    "fields": {
+      "title": "Воронеж",
+      "slug": "voronezh",
+      "is_active": true,
+      "display_order": 22,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 41,
+    "fields": {
+      "title": "Дагестанские огни",
+      "slug": "dagestanskie-ogni",
+      "is_active": true,
+      "display_order": 23,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 40,
+    "fields": {
+      "title": "Дербент",
+      "slug": "derbent",
+      "is_active": true,
+      "display_order": 24,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 71,
+    "fields": {
+      "title": "Зеленоград",
+      "slug": "zelenograd",
+      "is_active": true,
+      "display_order": 25,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 7,
+    "fields": {
+      "title": "Иваново",
+      "slug": "ivanovo",
+      "is_active": true,
+      "display_order": 26,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 8,
+    "fields": {
+      "title": "Ижевск",
+      "slug": "izhevsk",
+      "is_active": true,
+      "display_order": 27,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 10,
+    "fields": {
+      "title": "Калуга",
+      "slug": "kaluga",
+      "is_active": true,
+      "display_order": 28,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 37,
+    "fields": {
+      "title": "Калининград",
+      "slug": "kaliningrad",
+      "is_active": true,
+      "display_order": 29,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 30,
+    "fields": {
+      "title": "Каспийск",
+      "slug": "kaspijsk",
+      "is_active": true,
+      "display_order": 30,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 9,
+    "fields": {
+      "title": "Кемерово",
+      "slug": "kemerovo",
+      "is_active": true,
+      "display_order": 31,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 38,
+    "fields": {
+      "title": "Керчь",
+      "slug": "kerch",
+      "is_active": true,
+      "display_order": 32,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 82,
+    "fields": {
+      "title": "Кизляр",
+      "slug": "kizlyar",
+      "is_active": true,
+      "display_order": 33,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 75,
+    "fields": {
+      "title": "Киров",
+      "slug": "kirov",
+      "is_active": true,
+      "display_order": 34,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 85,
+    "fields": {
+      "title": "Коломна",
+      "slug": "kolomna",
+      "is_active": true,
+      "display_order": 35,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 27,
+    "fields": {
+      "title": "Красная Поляна",
+      "slug": "krasnaya-polyana",
+      "is_active": true,
+      "display_order": 36,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 51,
+    "fields": {
+      "title": "Красноярск",
+      "slug": "krasnoyarsk",
+      "is_active": true,
+      "display_order": 37,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 12,
+    "fields": {
+      "title": "Лакинск",
+      "slug": "lakinsk",
+      "is_active": true,
+      "display_order": 38,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 11,
+    "fields": {
+      "title": "Липецк",
+      "slug": "lipetsk",
+      "is_active": true,
+      "display_order": 39,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 72,
+    "fields": {
+      "title": "Магнитогорск",
+      "slug": "magnitogorsk",
+      "is_active": true,
+      "display_order": 40,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 1,
+    "fields": {
+      "title": "Махачкала",
+      "slug": "mahachkala",
+      "is_active": true,
+      "display_order": 41,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 42,
+    "fields": {
+      "title": "Минеральные Воды",
+      "slug": "mineralnye-vody",
+      "is_active": true,
+      "display_order": 42,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 63,
+    "fields": {
+      "title": "Нальчик",
+      "slug": "nalchik",
+      "is_active": true,
+      "display_order": 43,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 57,
+    "fields": {
+      "title": "Невинномысск",
+      "slug": "nevinnomyssk",
+      "is_active": true,
+      "display_order": 44,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 29,
+    "fields": {
+      "title": "Новодвинск",
+      "slug": "novodvinsk",
+      "is_active": true,
+      "display_order": 45,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 20,
+    "fields": {
+      "title": "Обнинск",
+      "slug": "obninsk",
+      "is_active": true,
+      "display_order": 46,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 81,
+    "fields": {
+      "title": "Омск",
+      "slug": "omsk",
+      "is_active": true,
+      "display_order": 47,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 84,
+    "fields": {
+      "title": "Орел",
+      "slug": "orel",
+      "is_active": true,
+      "display_order": 48,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 52,
+    "fields": {
+      "title": "Оренбург",
+      "slug": "orenburg",
+      "is_active": true,
+      "display_order": 49,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 28,
+    "fields": {
+      "title": "Пенза",
+      "slug": "penza",
+      "is_active": true,
+      "display_order": 50,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 13,
+    "fields": {
+      "title": "Пермь",
+      "slug": "perm",
+      "is_active": true,
+      "display_order": 51,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 25,
+    "fields": {
+      "title": "Петрозаводск",
+      "slug": "petrozavodsk",
+      "is_active": true,
+      "display_order": 52,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 86,
+    "fields": {
+      "title": "Псков",
+      "slug": "pskov",
+      "is_active": true,
+      "display_order": 53,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 39,
+    "fields": {
+      "title": "Пятигорск",
+      "slug": "pyatigorsk",
+      "is_active": true,
+      "display_order": 54,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 47,
+    "fields": {
+      "title": "Ростов на дону",
+      "slug": "rostov-na-donu",
+      "is_active": true,
+      "display_order": 55,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 14,
+    "fields": {
+      "title": "Рязань",
+      "slug": "ryazan",
+      "is_active": true,
+      "display_order": 56,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 54,
+    "fields": {
+      "title": "Самара",
+      "slug": "samara",
+      "is_active": true,
+      "display_order": 57,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 16,
+    "fields": {
+      "title": "Саранск",
+      "slug": "saransk",
+      "is_active": true,
+      "display_order": 58,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 49,
+    "fields": {
+      "title": "Саратов",
+      "slug": "saratov",
+      "is_active": true,
+      "display_order": 59,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 55,
+    "fields": {
+      "title": "Севастополь",
+      "slug": "sevastopol",
+      "is_active": true,
+      "display_order": 60,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 24,
+    "fields": {
+      "title": "Северодвинск",
+      "slug": "severodvinsk",
+      "is_active": true,
+      "display_order": 61,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 68,
+    "fields": {
+      "title": "Симферополь",
+      "slug": "simferopol",
+      "is_active": true,
+      "display_order": 62,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 48,
+    "fields": {
+      "title": "Смоленск",
+      "slug": "smolensk",
+      "is_active": true,
+      "display_order": 63,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 26,
+    "fields": {
+      "title": "Сочи",
+      "slug": "sochi",
+      "is_active": true,
+      "display_order": 64,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 66,
+    "fields": {
+      "title": "Ставрополь",
+      "slug": "stavropol",
+      "is_active": true,
+      "display_order": 65,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 15,
+    "fields": {
+      "title": "Суздаль",
+      "slug": "suzdal",
+      "is_active": true,
+      "display_order": 66,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 36,
+    "fields": {
+      "title": "Сургут",
+      "slug": "surgut",
+      "is_active": true,
+      "display_order": 67,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 62,
+    "fields": {
+      "title": "Таганрог",
+      "slug": "taganrog",
+      "is_active": true,
+      "display_order": 68,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 78,
+    "fields": {
+      "title": "Тамань",
+      "slug": "taman",
+      "is_active": true,
+      "display_order": 69,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 17,
+    "fields": {
+      "title": "Тамбов",
+      "slug": "tambov",
+      "is_active": true,
+      "display_order": 70,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 76,
+    "fields": {
+      "title": "Тверь",
+      "slug": "tver",
+      "is_active": true,
+      "display_order": 71,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 74,
+    "fields": {
+      "title": "Тольятти",
+      "slug": "tolyatti",
+      "is_active": true,
+      "display_order": 72,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 89,
+    "fields": {
+      "title": "Томск",
+      "slug": "tomsk",
+      "is_active": true,
+      "display_order": 73,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 64,
+    "fields": {
+      "title": "Тюмень",
+      "slug": "tyumen",
+      "is_active": true,
+      "display_order": 74,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 53,
+    "fields": {
+      "title": "Ульяновск",
+      "slug": "ulyanovsk",
+      "is_active": true,
+      "display_order": 75,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 18,
+    "fields": {
+      "title": "Уфа",
+      "slug": "ufa",
+      "is_active": true,
+      "display_order": 76,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 73,
+    "fields": {
+      "title": "Хабаровск",
+      "slug": "habarovsk",
+      "is_active": true,
+      "display_order": 77,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 88,
+    "fields": {
+      "title": "Хасавюрт",
+      "slug": "hasavyurt",
+      "is_active": true,
+      "display_order": 78,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 45,
+    "fields": {
+      "title": "Чебоксары",
+      "slug": "cheboksary",
+      "is_active": true,
+      "display_order": 79,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 67,
+    "fields": {
+      "title": "Челябинск",
+      "slug": "chelyabinsk",
+      "is_active": true,
+      "display_order": 80,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 58,
+    "fields": {
+      "title": "Чита",
+      "slug": "chita",
+      "is_active": true,
+      "display_order": 81,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  },
+  {
+    "model": "website_api.city",
+    "pk": 23,
+    "fields": {
+      "title": "Ярославль",
+      "slug": "yaroslavl",
+      "is_active": true,
+      "display_order": 82,
+      "created_at": "2025-12-29T15:03:29.964142",
+      "updated_at": "2025-12-29T15:03:29.964142"
+    }
+  }
 ]
-

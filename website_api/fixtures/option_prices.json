@@ -1,62 +1,638 @@
 [
-  {"model": "website_api.optionprice", "pk": 1, "fields": {"option_id": 1, "city_id": 34, "technic_category_id": 1, "amount": "500.00"}},
-  {"model": "website_api.optionprice", "pk": 2, "fields": {"option_id": 2, "city_id": 34, "technic_category_id": 1, "amount": "100.00"}},
-  {"model": "website_api.optionprice", "pk": 3, "fields": {"option_id": 3, "city_id": 34, "technic_category_id": 1, "amount": "1000.00"}},
-  {"model": "website_api.optionprice", "pk": 4, "fields": {"option_id": 4, "city_id": 34, "technic_category_id": 1, "amount": "300.00"}},
-  {"model": "website_api.optionprice", "pk": 5, "fields": {"option_id": 5, "city_id": 34, "technic_category_id": 1, "amount": "1000.00"}},
-  {"model": "website_api.optionprice", "pk": 6, "fields": {"option_id": 6, "city_id": 34, "technic_category_id": 1, "amount": "2000.00"}},
-  {"model": "website_api.optionprice", "pk": 7, "fields": {"option_id": 7, "city_id": 34, "technic_category_id": 1, "amount": "2500.00"}},
-  {"model": "website_api.optionprice", "pk": 8, "fields": {"option_id": 8, "city_id": 34, "technic_category_id": 1, "amount": "1500.00"}},
-  {"model": "website_api.optionprice", "pk": 9, "fields": {"option_id": 9, "city_id": 34, "technic_category_id": 1, "amount": "3000.00"}},
-  {"model": "website_api.optionprice", "pk": 10, "fields": {"option_id": 10, "city_id": 34, "technic_category_id": 1, "amount": "800.00"}},
-  {"model": "website_api.optionprice", "pk": 11, "fields": {"option_id": 17, "city_id": 34, "technic_category_id": 3, "amount": "500.00"}},
-  {"model": "website_api.optionprice", "pk": 12, "fields": {"option_id": 18, "city_id": 34, "technic_category_id": 5, "amount": "2000.00"}},
-  {"model": "website_api.optionprice", "pk": 13, "fields": {"option_id": 19, "city_id": 34, "technic_category_id": 5, "amount": "3000.00"}},
-  {"model": "website_api.optionprice", "pk": 14, "fields": {"option_id": 20, "city_id": 34, "technic_category_id": null, "amount": "2500.00"}},
-  {"model": "website_api.optionprice", "pk": 15, "fields": {"option_id": 21, "city_id": 34, "technic_category_id": null, "amount": "3000.00"}},
-  {"model": "website_api.optionprice", "pk": 16, "fields": {"option_id": 27, "city_id": 34, "technic_category_id": null, "amount": "2800.00"}},
-  {"model": "website_api.optionprice", "pk": 17, "fields": {"option_id": 29, "city_id": 34, "technic_category_id": null, "amount": "5000.00"}},
-  {"model": "website_api.optionprice", "pk": 18, "fields": {"option_id": 43, "city_id": 34, "technic_category_id": null, "amount": "8000.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 19, "fields": {"option_id": 1, "city_id": 79, "technic_category_id": 1, "amount": "600.00"}},
-  {"model": "website_api.optionprice", "pk": 20, "fields": {"option_id": 2, "city_id": 79, "technic_category_id": 1, "amount": "150.00"}},
-  {"model": "website_api.optionprice", "pk": 21, "fields": {"option_id": 3, "city_id": 79, "technic_category_id": 1, "amount": "1200.00"}},
-  {"model": "website_api.optionprice", "pk": 22, "fields": {"option_id": 4, "city_id": 79, "technic_category_id": 1, "amount": "350.00"}},
-  {"model": "website_api.optionprice", "pk": 23, "fields": {"option_id": 5, "city_id": 79, "technic_category_id": 1, "amount": "1200.00"}},
-  {"model": "website_api.optionprice", "pk": 24, "fields": {"option_id": 6, "city_id": 79, "technic_category_id": 1, "amount": "2200.00"}},
-  {"model": "website_api.optionprice", "pk": 25, "fields": {"option_id": 18, "city_id": 79, "technic_category_id": 5, "amount": "2500.00"}},
-  {"model": "website_api.optionprice", "pk": 26, "fields": {"option_id": 19, "city_id": 79, "technic_category_id": 5, "amount": "3500.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 27, "fields": {"option_id": 1, "city_id": 35, "technic_category_id": 1, "amount": "400.00"}},
-  {"model": "website_api.optionprice", "pk": 28, "fields": {"option_id": 2, "city_id": 35, "technic_category_id": 1, "amount": "80.00"}},
-  {"model": "website_api.optionprice", "pk": 29, "fields": {"option_id": 3, "city_id": 35, "technic_category_id": 1, "amount": "800.00"}},
-  {"model": "website_api.optionprice", "pk": 30, "fields": {"option_id": 4, "city_id": 35, "technic_category_id": 1, "amount": "250.00"}},
-  {"model": "website_api.optionprice", "pk": 31, "fields": {"option_id": 18, "city_id": 35, "technic_category_id": 5, "amount": "1500.00"}},
-  {"model": "website_api.optionprice", "pk": 32, "fields": {"option_id": 19, "city_id": 35, "technic_category_id": 5, "amount": "2500.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 33, "fields": {"option_id": 1, "city_id": 46, "technic_category_id": 1, "amount": "450.00"}},
-  {"model": "website_api.optionprice", "pk": 34, "fields": {"option_id": 2, "city_id": 46, "technic_category_id": 1, "amount": "90.00"}},
-  {"model": "website_api.optionprice", "pk": 35, "fields": {"option_id": 3, "city_id": 46, "technic_category_id": 1, "amount": "900.00"}},
-  {"model": "website_api.optionprice", "pk": 36, "fields": {"option_id": 18, "city_id": 46, "technic_category_id": 5, "amount": "1800.00"}},
-  {"model": "website_api.optionprice", "pk": 37, "fields": {"option_id": 19, "city_id": 46, "technic_category_id": 5, "amount": "2800.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 38, "fields": {"option_id": 1, "city_id": 1, "technic_category_id": 1, "amount": "350.00"}},
-  {"model": "website_api.optionprice", "pk": 39, "fields": {"option_id": 2, "city_id": 1, "technic_category_id": 1, "amount": "70.00"}},
-  {"model": "website_api.optionprice", "pk": 40, "fields": {"option_id": 3, "city_id": 1, "technic_category_id": 1, "amount": "700.00"}},
-  {"model": "website_api.optionprice", "pk": 41, "fields": {"option_id": 4, "city_id": 1, "technic_category_id": 1, "amount": "200.00"}},
-  {"model": "website_api.optionprice", "pk": 42, "fields": {"option_id": 5, "city_id": 1, "technic_category_id": 1, "amount": "700.00"}},
-  {"model": "website_api.optionprice", "pk": 43, "fields": {"option_id": 6, "city_id": 1, "technic_category_id": 1, "amount": "1500.00"}},
-  {"model": "website_api.optionprice", "pk": 44, "fields": {"option_id": 18, "city_id": 1, "technic_category_id": 5, "amount": "1500.00"}},
-  {"model": "website_api.optionprice", "pk": 45, "fields": {"option_id": 19, "city_id": 1, "technic_category_id": 5, "amount": "2500.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 46, "fields": {"option_id": 1, "city_id": 19, "technic_category_id": 1, "amount": "400.00"}},
-  {"model": "website_api.optionprice", "pk": 47, "fields": {"option_id": 2, "city_id": 19, "technic_category_id": 1, "amount": "85.00"}},
-  {"model": "website_api.optionprice", "pk": 48, "fields": {"option_id": 18, "city_id": 19, "technic_category_id": 5, "amount": "1600.00"}},
-  {"model": "website_api.optionprice", "pk": 49, "fields": {"option_id": 19, "city_id": 19, "technic_category_id": 5, "amount": "2600.00"}},
-  
-  {"model": "website_api.optionprice", "pk": 50, "fields": {"option_id": 1, "city_id": 56, "technic_category_id": 1, "amount": "420.00"}},
-  {"model": "website_api.optionprice", "pk": 51, "fields": {"option_id": 2, "city_id": 56, "technic_category_id": 1, "amount": "88.00"}},
-  {"model": "website_api.optionprice", "pk": 52, "fields": {"option_id": 18, "city_id": 56, "technic_category_id": 5, "amount": "1700.00"}},
-  {"model": "website_api.optionprice", "pk": 53, "fields": {"option_id": 19, "city_id": 56, "technic_category_id": 5, "amount": "2700.00"}}
+  {
+    "model": "website_api.optionprice",
+    "pk": 1,
+    "fields": {
+      "option_id": 1,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 2,
+    "fields": {
+      "option_id": 2,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "100.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 3,
+    "fields": {
+      "option_id": 3,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "1000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 4,
+    "fields": {
+      "option_id": 4,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "300.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 5,
+    "fields": {
+      "option_id": 5,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "1000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 6,
+    "fields": {
+      "option_id": 6,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "2000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 7,
+    "fields": {
+      "option_id": 7,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "2500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 8,
+    "fields": {
+      "option_id": 8,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "1500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 9,
+    "fields": {
+      "option_id": 9,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "3000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 10,
+    "fields": {
+      "option_id": 10,
+      "city_id": 34,
+      "technic_category_id": 1,
+      "amount": "800.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 11,
+    "fields": {
+      "option_id": 17,
+      "city_id": 34,
+      "technic_category_id": 3,
+      "amount": "500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 12,
+    "fields": {
+      "option_id": 18,
+      "city_id": 34,
+      "technic_category_id": 5,
+      "amount": "2000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 13,
+    "fields": {
+      "option_id": 19,
+      "city_id": 34,
+      "technic_category_id": 5,
+      "amount": "3000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 14,
+    "fields": {
+      "option_id": 20,
+      "city_id": 34,
+      "technic_category_id": null,
+      "amount": "2500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 15,
+    "fields": {
+      "option_id": 21,
+      "city_id": 34,
+      "technic_category_id": null,
+      "amount": "3000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 16,
+    "fields": {
+      "option_id": 27,
+      "city_id": 34,
+      "technic_category_id": null,
+      "amount": "2800.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 17,
+    "fields": {
+      "option_id": 29,
+      "city_id": 34,
+      "technic_category_id": null,
+      "amount": "5000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 18,
+    "fields": {
+      "option_id": 43,
+      "city_id": 34,
+      "technic_category_id": null,
+      "amount": "8000.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 19,
+    "fields": {
+      "option_id": 1,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "600.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 20,
+    "fields": {
+      "option_id": 2,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "150.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 21,
+    "fields": {
+      "option_id": 3,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "1200.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 22,
+    "fields": {
+      "option_id": 4,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "350.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 23,
+    "fields": {
+      "option_id": 5,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "1200.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 24,
+    "fields": {
+      "option_id": 6,
+      "city_id": 79,
+      "technic_category_id": 1,
+      "amount": "2200.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 25,
+    "fields": {
+      "option_id": 18,
+      "city_id": 79,
+      "technic_category_id": 5,
+      "amount": "2500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 26,
+    "fields": {
+      "option_id": 19,
+      "city_id": 79,
+      "technic_category_id": 5,
+      "amount": "3500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 27,
+    "fields": {
+      "option_id": 1,
+      "city_id": 35,
+      "technic_category_id": 1,
+      "amount": "400.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 28,
+    "fields": {
+      "option_id": 2,
+      "city_id": 35,
+      "technic_category_id": 1,
+      "amount": "80.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 29,
+    "fields": {
+      "option_id": 3,
+      "city_id": 35,
+      "technic_category_id": 1,
+      "amount": "800.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 30,
+    "fields": {
+      "option_id": 4,
+      "city_id": 35,
+      "technic_category_id": 1,
+      "amount": "250.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 31,
+    "fields": {
+      "option_id": 18,
+      "city_id": 35,
+      "technic_category_id": 5,
+      "amount": "1500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 32,
+    "fields": {
+      "option_id": 19,
+      "city_id": 35,
+      "technic_category_id": 5,
+      "amount": "2500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 33,
+    "fields": {
+      "option_id": 1,
+      "city_id": 46,
+      "technic_category_id": 1,
+      "amount": "450.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 34,
+    "fields": {
+      "option_id": 2,
+      "city_id": 46,
+      "technic_category_id": 1,
+      "amount": "90.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 35,
+    "fields": {
+      "option_id": 3,
+      "city_id": 46,
+      "technic_category_id": 1,
+      "amount": "900.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 36,
+    "fields": {
+      "option_id": 18,
+      "city_id": 46,
+      "technic_category_id": 5,
+      "amount": "1800.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 37,
+    "fields": {
+      "option_id": 19,
+      "city_id": 46,
+      "technic_category_id": 5,
+      "amount": "2800.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 38,
+    "fields": {
+      "option_id": 1,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "350.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 39,
+    "fields": {
+      "option_id": 2,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "70.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 40,
+    "fields": {
+      "option_id": 3,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "700.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 41,
+    "fields": {
+      "option_id": 4,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "200.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 42,
+    "fields": {
+      "option_id": 5,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "700.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 43,
+    "fields": {
+      "option_id": 6,
+      "city_id": 1,
+      "technic_category_id": 1,
+      "amount": "1500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 44,
+    "fields": {
+      "option_id": 18,
+      "city_id": 1,
+      "technic_category_id": 5,
+      "amount": "1500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 45,
+    "fields": {
+      "option_id": 19,
+      "city_id": 1,
+      "technic_category_id": 5,
+      "amount": "2500.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 46,
+    "fields": {
+      "option_id": 1,
+      "city_id": 19,
+      "technic_category_id": 1,
+      "amount": "400.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 47,
+    "fields": {
+      "option_id": 2,
+      "city_id": 19,
+      "technic_category_id": 1,
+      "amount": "85.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 48,
+    "fields": {
+      "option_id": 18,
+      "city_id": 19,
+      "technic_category_id": 5,
+      "amount": "1600.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 49,
+    "fields": {
+      "option_id": 19,
+      "city_id": 19,
+      "technic_category_id": 5,
+      "amount": "2600.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 50,
+    "fields": {
+      "option_id": 1,
+      "city_id": 56,
+      "technic_category_id": 1,
+      "amount": "420.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 51,
+    "fields": {
+      "option_id": 2,
+      "city_id": 56,
+      "technic_category_id": 1,
+      "amount": "88.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 52,
+    "fields": {
+      "option_id": 18,
+      "city_id": 56,
+      "technic_category_id": 5,
+      "amount": "1700.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  },
+  {
+    "model": "website_api.optionprice",
+    "pk": 53,
+    "fields": {
+      "option_id": 19,
+      "city_id": 56,
+      "technic_category_id": 5,
+      "amount": "2700.00",
+      "created_at": "2025-12-29T15:03:38.574273",
+      "updated_at": "2025-12-29T15:03:38.574273"
+    }
+  }
 ]
-
