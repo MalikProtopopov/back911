@@ -5,6 +5,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
+/archive/
 
 # Virtual environments
 venv/
@@ -73,4 +74,7 @@ Thumbs.db
 
 # Poetry
 poetry.lock
+
+# Archive folder
+archive/
 
