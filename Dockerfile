@@ -18,10 +18,18 @@ ENV POETRY_NO_INTERACTION=1 \
 WORKDIR /app
 
 # Копирование файлов зависимостей
-COPY pyproject.toml poetry.lock ./
+# poetry.lock может отсутствовать в репозитории, поэтому копируем опционально
+COPY pyproject.toml ./
+COPY poetry.lock* ./
 
 # Установка зависимостей (без dev зависимостей для production)
-RUN poetry install --no-root --without dev && rm -rf $POETRY_CACHE_DIR
+# Если poetry.lock отсутствует, poetry создаст его автоматически
+RUN if [ -f poetry.lock ]; then \
+        poetry install --no-root --without dev && rm -rf $POETRY_CACHE_DIR; \
+    else \
+        poetry lock --no-update && \
+        poetry install --no-root --without dev && rm -rf $POETRY_CACHE_DIR; \
+    fi
 
 # Финальный образ
 FROM python:3.11-slim
