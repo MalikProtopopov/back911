@@ -20,6 +20,7 @@ def api_root(request):
         "description": "REST API для корпоративного сайта 911",
         "endpoints": {
             "api_base": "/api/website/",
+            "api_pricing": "/api/pricing/",
             "documentation": {
                 "swagger_ui": "/api/docs/",
                 "redoc": "/api/redoc/",
@@ -36,6 +37,11 @@ def api_root(request):
                 "seo_meta": "/api/website/seo-meta/",
                 "leads": "/api/website/leads/",
             },
+            "pricing_endpoints": {
+                "parameter_types": "/api/pricing/parameter-types/",
+                "delivery_zones": "/api/pricing/cities/{city_id}/delivery-zones/",
+                "calculate": "/api/pricing/calculate/",
+            },
         },
         "admin": "/admin/",
     })
@@ -51,6 +57,7 @@ urlpatterns = [
     
     # API endpoints
     path("api/website/", include("website_api.urls")),
+    path("api/pricing/", include("website_api.urls_pricing")),
     
     # API documentation
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),

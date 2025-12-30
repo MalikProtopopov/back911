@@ -2,9 +2,12 @@ from django.contrib import admin
 from website_api.models import (
     City, Service, TechnicCategory, Option, OptionPrice,
     CityContent, ServiceContent, Advantage, Metric,
-    Contact, AppLink, SeoMeta, Lead
+    Contact, AppLink, SeoMeta, Lead,
+    ParameterType, ParameterValue, OptionParameterType,
+    ParameterPrice, DeliveryZone, PriceChangeLog
 )
 from website_api.forms import CityContentAdminForm, ServiceContentAdminForm
+from website_api.cache import pricing_cache
 
 
 class CityContentInline(admin.StackedInline):
@@ -45,15 +48,37 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(TechnicCategory)
 class TechnicCategoryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'service']
-    list_filter = ['service']
+    list_display = ['title', 'slug']
+    search_fields = ['title', 'slug']
+    prepopulated_fields = {'slug': ('title',)}
+
+
+class OptionParameterTypeInline(admin.TabularInline):
+    """Inline для параметров опции"""
+    model = OptionParameterType
+    extra = 1
+    fields = ['parameter_type', 'is_required']
+    autocomplete_fields = ['parameter_type']
 
 
 @admin.register(Option)
 class OptionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'service', 'is_active']
-    list_filter = ['service', 'is_active']
-    search_fields = ['title']
+    list_display = ['title', 'service', 'has_parameters', 'is_active']
+    list_filter = ['service', 'has_parameters', 'is_active']
+    search_fields = ['title', 'description']
+    inlines = [OptionParameterTypeInline]
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'service', 'description')
+        }),
+        ('Параметры ценообразования', {
+            'fields': ('has_parameters',),
+            'description': 'Если включено, цена будет зависеть от выбранных параметров'
+        }),
+        ('Статус', {
+            'fields': ('is_active',)
+        }),
+    )
 
 
 @admin.register(OptionPrice)
@@ -61,6 +86,41 @@ class OptionPriceAdmin(admin.ModelAdmin):
     list_display = ['option', 'city', 'technic_category', 'amount']
     list_filter = ['city', 'option__service']
     search_fields = ['option__title', 'city__title']
+    
+    def save_model(self, request, obj, form, change):
+        """Логирование изменений цен"""
+        if change:
+            old_obj = OptionPrice.objects.get(pk=obj.pk)
+            old_amount = old_obj.amount
+        else:
+            old_amount = None
+        
+        # Сохраняем объект
+        super().save_model(request, obj, form, change)
+        
+        # Логируем изменение, если цена изменилась
+        if change and old_amount != obj.amount:
+            PriceChangeLog.objects.create(
+                entity_type='OPTION_PRICE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=old_amount,
+                new_value=obj.amount,
+                changed_by=request.user.email or request.user.username,
+            )
+        elif not change:
+            # Создание новой записи
+            PriceChangeLog.objects.create(
+                entity_type='OPTION_PRICE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=None,
+                new_value=obj.amount,
+                changed_by=request.user.email or request.user.username,
+            )
+        
+        # Инвалидируем кэш
+        pricing_cache.invalidate()
 
 
 @admin.register(ServiceContent)
@@ -141,4 +201,156 @@ class LeadAdmin(admin.ModelAdmin):
     def mark_as_processing(self, request, queryset):
         queryset.update(status='processing')
     mark_as_processing.short_description = "Отметить как обработано"
+
+
+# ============== Pricing System Admin ==============
+
+class ParameterValueInline(admin.TabularInline):
+    """Inline для значений параметра"""
+    model = ParameterValue
+    extra = 3
+    fields = ['value', 'display_name', 'sort_order', 'is_active']
+
+
+@admin.register(ParameterType)
+class ParameterTypeAdmin(admin.ModelAdmin):
+    list_display = ['title', 'code', 'values_count', 'sort_order', 'is_active']
+    list_filter = ['is_active']
+    search_fields = ['title', 'code']
+    inlines = [ParameterValueInline]
+    fieldsets = (
+        (None, {
+            'fields': ('code', 'title', 'description')
+        }),
+        ('Настройки', {
+            'fields': ('sort_order', 'is_active')
+        }),
+    )
+    
+    def values_count(self, obj):
+        return obj.values.filter(is_active=True).count()
+    values_count.short_description = 'Кол-во значений'
+
+
+@admin.register(ParameterValue)
+class ParameterValueAdmin(admin.ModelAdmin):
+    list_display = ['display_name', 'parameter_type', 'value', 'sort_order', 'is_active']
+    list_filter = ['parameter_type', 'is_active']
+    search_fields = ['display_name', 'value']
+    autocomplete_fields = ['parameter_type']
+
+
+@admin.register(OptionParameterType)
+class OptionParameterTypeAdmin(admin.ModelAdmin):
+    list_display = ['option', 'parameter_type', 'is_required']
+    list_filter = ['is_required', 'parameter_type']
+    search_fields = ['option__title', 'parameter_type__title']
+    autocomplete_fields = ['option', 'parameter_type']
+
+
+@admin.register(ParameterPrice)
+class ParameterPriceAdmin(admin.ModelAdmin):
+    list_display = ['option', 'parameter_value', 'city', 'technic_category', 'price_modifier']
+    list_filter = ['city', 'option__service', 'parameter_value__parameter_type']
+    search_fields = ['option__title', 'parameter_value__display_name']
+    autocomplete_fields = ['option', 'parameter_value', 'city', 'technic_category']
+    
+    def save_model(self, request, obj, form, change):
+        """Логирование изменений цен"""
+        if change:
+            old_obj = ParameterPrice.objects.get(pk=obj.pk)
+            old_value = old_obj.price_modifier
+        else:
+            old_value = None
+        
+        # Сохраняем объект
+        super().save_model(request, obj, form, change)
+        
+        # Логируем изменение, если цена изменилась
+        if change and old_value != obj.price_modifier:
+            PriceChangeLog.objects.create(
+                entity_type='PARAMETER_PRICE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=old_value,
+                new_value=obj.price_modifier,
+                changed_by=request.user.email or request.user.username,
+            )
+        elif not change:
+            # Создание новой записи
+            PriceChangeLog.objects.create(
+                entity_type='PARAMETER_PRICE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=None,
+                new_value=obj.price_modifier,
+                changed_by=request.user.email or request.user.username,
+            )
+        
+        # Инвалидируем кэш
+        pricing_cache.invalidate()
+
+
+@admin.register(DeliveryZone)
+class DeliveryZoneAdmin(admin.ModelAdmin):
+    list_display = ['city', 'zone_name', 'location_status', 'delivery_price', 'is_active']
+    list_filter = ['city', 'location_status', 'is_active']
+    search_fields = ['zone_name', 'city__title']
+    autocomplete_fields = ['city']
+    
+    def save_model(self, request, obj, form, change):
+        """Логирование изменений цен"""
+        if change:
+            old_obj = DeliveryZone.objects.get(pk=obj.pk)
+            old_value = old_obj.delivery_price
+        else:
+            old_value = None
+        
+        # Сохраняем объект
+        super().save_model(request, obj, form, change)
+        
+        # Логируем изменение, если цена изменилась
+        if change and old_value != obj.delivery_price:
+            PriceChangeLog.objects.create(
+                entity_type='DELIVERY_ZONE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=old_value,
+                new_value=obj.delivery_price,
+                changed_by=request.user.email or request.user.username,
+            )
+        elif not change:
+            # Создание новой записи
+            PriceChangeLog.objects.create(
+                entity_type='DELIVERY_ZONE',
+                entity_id=obj.pk,
+                entity_description=str(obj),
+                old_value=None,
+                new_value=obj.delivery_price,
+                changed_by=request.user.email or request.user.username,
+            )
+        
+        # Инвалидируем кэш
+        pricing_cache.invalidate(f'delivery_zones_{obj.city_id}')
+
+
+@admin.register(PriceChangeLog)
+class PriceChangeLogAdmin(admin.ModelAdmin):
+    list_display = ['entity_description', 'old_value', 'new_value', 'changed_at', 'changed_by']
+    list_filter = ['entity_type', 'changed_at']
+    search_fields = ['entity_description', 'changed_by']
+    readonly_fields = [
+        'entity_type', 'entity_id', 'entity_description',
+        'old_value', 'new_value', 'changed_at', 'changed_by', 'reason'
+    ]
+    ordering = ['-changed_at']
+    
+    def has_add_permission(self, request):
+        return False
+    
+    def has_change_permission(self, request, obj=None):
+        return False
+    
+    def has_delete_permission(self, request, obj=None):
+        return False
 

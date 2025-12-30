@@ -1,0 +1,322 @@
+[
+  {
+    "model": "website_api.parametervalue",
+    "pk": 1,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R13",
+      "display_name": "R13",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 2,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R14",
+      "display_name": "R14",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 3,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R15",
+      "display_name": "R15",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 4,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R16",
+      "display_name": "R16",
+      "sort_order": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 5,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R17",
+      "display_name": "R17",
+      "sort_order": 5,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 6,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R18",
+      "display_name": "R18",
+      "sort_order": 6,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 7,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R19",
+      "display_name": "R19",
+      "sort_order": 7,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 8,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R20",
+      "display_name": "R20",
+      "sort_order": 8,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 9,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R21",
+      "display_name": "R21",
+      "sort_order": 9,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 10,
+    "fields": {
+      "parameter_type": 1,
+      "value": "R22",
+      "display_name": "R22",
+      "sort_order": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 11,
+    "fields": {
+      "parameter_type": 2,
+      "value": "gasoline_92",
+      "display_name": "Бензин АИ-92",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 12,
+    "fields": {
+      "parameter_type": 2,
+      "value": "gasoline_95",
+      "display_name": "Бензин АИ-95",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 13,
+    "fields": {
+      "parameter_type": 2,
+      "value": "gasoline_98",
+      "display_name": "Бензин АИ-98",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 14,
+    "fields": {
+      "parameter_type": 2,
+      "value": "diesel",
+      "display_name": "Дизель",
+      "sort_order": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 15,
+    "fields": {
+      "parameter_type": 2,
+      "value": "gas",
+      "display_name": "Газ",
+      "sort_order": 5,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 16,
+    "fields": {
+      "parameter_type": 3,
+      "value": "5",
+      "display_name": "5 литров",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 17,
+    "fields": {
+      "parameter_type": 3,
+      "value": "10",
+      "display_name": "10 литров",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 18,
+    "fields": {
+      "parameter_type": 3,
+      "value": "20",
+      "display_name": "20 литров",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 19,
+    "fields": {
+      "parameter_type": 4,
+      "value": "10",
+      "display_name": "10 метров",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 20,
+    "fields": {
+      "parameter_type": 4,
+      "value": "16",
+      "display_name": "16 метров",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 21,
+    "fields": {
+      "parameter_type": 4,
+      "value": "22",
+      "display_name": "22 метра",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 22,
+    "fields": {
+      "parameter_type": 5,
+      "value": "synthetic_5w30",
+      "display_name": "Синтетика 5W-30",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 23,
+    "fields": {
+      "parameter_type": 5,
+      "value": "synthetic_5w40",
+      "display_name": "Синтетика 5W-40",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 24,
+    "fields": {
+      "parameter_type": 5,
+      "value": "semi_synthetic",
+      "display_name": "Полусинтетика",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 25,
+    "fields": {
+      "parameter_type": 5,
+      "value": "mineral",
+      "display_name": "Минеральное",
+      "sort_order": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 26,
+    "fields": {
+      "parameter_type": 6,
+      "value": "40",
+      "display_name": "40 литров",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 27,
+    "fields": {
+      "parameter_type": 6,
+      "value": "50",
+      "display_name": "50 литров",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 28,
+    "fields": {
+      "parameter_type": 6,
+      "value": "60",
+      "display_name": "60 литров",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametervalue",
+    "pk": 29,
+    "fields": {
+      "parameter_type": 6,
+      "value": "80",
+      "display_name": "80 литров",
+      "sort_order": 4,
+      "is_active": true
+    }
+  }
+]
+
