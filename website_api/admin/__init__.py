@@ -254,7 +254,8 @@ class DocumentAdmin(admin.ModelAdmin):
 
 @admin.register(Lead)
 class LeadAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone', 'lead_type', 'city', 'service', 'status', 'created_at']
+    list_display = ['display_link', 'phone', 'lead_type', 'city', 'service', 'status', 'created_at']
+    list_display_links = ['display_link']
     list_filter = ['status', 'lead_type', 'city', 'service', 'created_at']
     search_fields = ['name', 'phone', 'email', 'page_url']
     readonly_fields = ['created_at', 'processed_at']
@@ -274,6 +275,14 @@ class LeadAdmin(admin.ModelAdmin):
     )
     
     actions = ['mark_as_processing']
+    
+    def display_link(self, obj):
+        """Отображает имя или телефон с коротким ID для кликабельности"""
+        if obj.name and obj.name.strip():
+            return f"{obj.name} (#{obj.id})"
+        return f"{obj.phone} (#{obj.id})"
+    display_link.short_description = "Имя / Телефон"
+    display_link.admin_order_field = 'name'
     
     def mark_as_processing(self, request, queryset):
         queryset.update(status='processing')
