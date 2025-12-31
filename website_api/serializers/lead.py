@@ -7,6 +7,13 @@ from website_api.models import Lead
 class LeadCreateSerializer(serializers.ModelSerializer):
     """Serializer for creating leads"""
     
+    name = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True,
+        max_length=100
+    )
+    
     class Meta:
         model = Lead
         fields = [
@@ -16,6 +23,8 @@ class LeadCreateSerializer(serializers.ModelSerializer):
             'city',
             'service',
             'message',
+            'lead_type',
+            'page_url',
             'source_page',
             'utm_source',
             'utm_medium',
@@ -37,12 +46,20 @@ class LeadCreateSerializer(serializers.ModelSerializer):
         return value
     
     def validate_name(self, value):
-        """Validate name"""
-        if len(value.strip()) < 2:
-            raise serializers.ValidationError(
-                "Имя должно содержать минимум 2 символа"
-            )
-        return value.strip()
+        """Validate name - allow empty strings for optional field"""
+        # Если значение не передано (None) - возвращаем None
+        if value is None:
+            return None
+        # Если передана пустая строка или только пробелы - возвращаем пустую строку
+        if isinstance(value, str):
+            stripped = value.strip()
+            # Разрешаем пустые строки (поле опциональное)
+            if not stripped:
+                return ""
+            # Если значение не пустое, просто возвращаем обрезанное значение
+            # Без проверки минимальной длины - поле опциональное
+            return stripped
+        return value
 
 
 class LeadSerializer(serializers.ModelSerializer):
@@ -50,6 +67,7 @@ class LeadSerializer(serializers.ModelSerializer):
     city_title = serializers.CharField(source='city.title', read_only=True, allow_null=True)
     service_title = serializers.CharField(source='service.title', read_only=True, allow_null=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
+    lead_type_display = serializers.CharField(source='get_lead_type_display', read_only=True)
     
     class Meta:
         model = Lead
@@ -63,6 +81,9 @@ class LeadSerializer(serializers.ModelSerializer):
             'service',
             'service_title',
             'message',
+            'lead_type',
+            'lead_type_display',
+            'page_url',
             'source_page',
             'utm_source',
             'utm_medium',

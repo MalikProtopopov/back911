@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "django_filters",
     "corsheaders",
     "drf_spectacular",
-    # "django_ckeditor_5",  # Temporarily disabled due to installation issues
+    "django_ckeditor_5",
     
     # Local apps
     "website_api",
@@ -260,6 +260,7 @@ CACHES = {
 
 
 # CKEditor 5 configuration
+# Документация: https://github.com/hvlads/django-ckeditor-5
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
@@ -276,16 +277,15 @@ CKEDITOR_5_CONFIGS = {
     'extends': {
         'toolbar': [
             'heading', '|',
-            'bold', 'italic', 'underline', 'strikethrough', 'code', '|',
+            'bold', 'italic', 'underline', 'strikethrough', '|',
             'fontSize', 'fontColor', 'fontBackgroundColor', '|',
-            'link', 'bulletedList', 'numberedList', 'todoList', '|',
-            'blockQuote', 'insertTable', 'imageUpload', 'mediaEmbed', '|',
-            'horizontalLine', 'specialCharacters', '|',
-            'alignment', 'indent', 'outdent', '|',
+            'link', 'bulletedList', 'numberedList', '|',
+            'alignment', '|',
+            'blockQuote', 'insertTable', '|',
             'undo', 'redo', '|',
             'sourceEditing'
         ],
-        'height': 600,
+        'height': 500,
         'width': '100%',
     }
 }

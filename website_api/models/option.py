@@ -14,6 +14,17 @@ class Option(models.Model):
         related_name='options',
         verbose_name="Услуга"
     )
+    description = models.TextField(
+        blank=True,
+        verbose_name="Описание",
+        help_text="Подробное описание опции для пользователя"
+    )
+    has_parameters = models.BooleanField(
+        default=False,
+        verbose_name="Есть параметры",
+        help_text="Если True, цена зависит от выбранных параметров. "
+                  "Если False, используется фиксированная цена из OptionPrice."
+    )
     is_active = models.BooleanField(
         default=True,
         verbose_name="Активна"
@@ -26,4 +37,12 @@ class Option(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.service.title})"
+    
+    @property
+    def required_parameter_types(self):
+        """Возвращает типы параметров, которые требуются для этой опции"""
+        return [
+            link.parameter_type 
+            for link in self.parameter_types.filter(is_required=True)
+        ]
 

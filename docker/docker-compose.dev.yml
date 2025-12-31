@@ -22,15 +22,17 @@ services:
     entrypoint: []
     command: >
       sh -c "
-        python manage.py migrate --no-input &&
-        python manage.py collectstatic --no-input &&
-        python manage.py runserver 0.0.0.0:8000
+        python3 manage.py migrate --no-input &&
+        python3 manage.py collectstatic --no-input &&
+        python3 manage.py runserver 0.0.0.0:8000
       "
     ports:
       - "8001:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=website_project.settings.dev
       - PYTHONUNBUFFERED=1
+      - PATH=/app/.venv/bin:/usr/local/bin:/usr/bin:/bin
+      - PYTHONPATH=/app/.venv/lib/python3.11/site-packages:/app
     env_file:
       - .env
     depends_on:

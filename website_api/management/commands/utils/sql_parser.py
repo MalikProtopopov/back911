@@ -196,6 +196,105 @@ def parse_prices(dump_path: str) -> List[Dict[str, any]]:
     return prices
 
 
+def parse_order_conditions(dump_path: str) -> List[Dict[str, any]]:
+    """
+    Parse order conditions (parameters) from SQL dump.
+    
+    Returns list of dicts: [{
+        'id': 965,
+        'title': '13',  # Значение параметра (R13, АИ-92...)
+        'condition_type': 'radius',  # Тип параметра
+        'additional_price': '1500.00',  # Цена/надбавка
+        'option_id': 4588 or None  # Связь с опцией
+    }, ...]
+    """
+    conditions = []
+    
+    with open(dump_path, 'r', encoding='utf-8') as f:
+        in_condition_section = False
+        
+        for line in f:
+            if 'COPY public.order_condition_db' in line and 'FROM stdin' in line:
+                in_condition_section = True
+                continue
+            
+            if in_condition_section and line.strip() == '\\.':
+                break
+            
+            if in_condition_section and line.strip():
+                parts = line.strip().split('\t')
+                if len(parts) >= 5:
+                    try:
+                        condition_id = int(parts[0])
+                        title = parts[1]
+                        condition_type = parts[2]
+                        additional_price = parts[3]
+                        option_id = None if parts[4] == '\\N' else int(parts[4])
+                        
+                        conditions.append({
+                            'id': condition_id,
+                            'title': title,
+                            'condition_type': condition_type,
+                            'additional_price': additional_price,
+                            'option_id': option_id
+                        })
+                    except (ValueError, IndexError):
+                        continue
+    
+    return conditions
+
+
+def parse_working_zones(dump_path: str) -> List[Dict[str, any]]:
+    """
+    Parse working zones (delivery zones) from SQL dump.
+    
+    Returns list of dicts: [{
+        'id': 30,
+        'title': 'Воронеж - внешняя',
+        'area_coordinates': '[[39.307584, 51.777745], ...]',  # JSON string
+        'departure_price': '2000.00',
+        'location_status': 'out_city' or 'in_city' or None,
+        'city_id': 4 or None
+    }, ...]
+    """
+    zones = []
+    
+    with open(dump_path, 'r', encoding='utf-8') as f:
+        in_zone_section = False
+        
+        for line in f:
+            if 'COPY public.working_zone_db' in line and 'FROM stdin' in line:
+                in_zone_section = True
+                continue
+            
+            if in_zone_section and line.strip() == '\\.':
+                break
+            
+            if in_zone_section and line.strip():
+                parts = line.strip().split('\t')
+                if len(parts) >= 6:
+                    try:
+                        zone_id = int(parts[0])
+                        title = parts[1]
+                        area_coordinates = parts[2]
+                        departure_price = parts[3]
+                        location_status = None if parts[4] == '\\N' else parts[4]
+                        city_id = None if parts[5] == '\\N' else int(parts[5])
+                        
+                        zones.append({
+                            'id': zone_id,
+                            'title': title,
+                            'area_coordinates': area_coordinates,
+                            'departure_price': departure_price,
+                            'location_status': location_status,
+                            'city_id': city_id
+                        })
+                    except (ValueError, IndexError):
+                        continue
+    
+    return zones
+
+
 def transliterate(text: str) -> str:
     """
     Transliterate Russian text to Latin for slug generation.

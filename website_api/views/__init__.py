@@ -9,6 +9,8 @@ from .contact import ContactViewSet
 from .app_link import AppLinkViewSet
 from .seo_meta import SeoMetaViewSet
 from .lead import LeadViewSet
+from .pricing import ParameterTypeViewSet, DeliveryZoneListView, PriceCalculateView
+from .document import DocumentViewSet
 
 __all__ = [
     'CityViewSet',
@@ -23,4 +25,8 @@ __all__ = [
     'AppLinkViewSet',
     'SeoMetaViewSet',
     'LeadViewSet',
+    'ParameterTypeViewSet',
+    'DeliveryZoneListView',
+    'PriceCalculateView',
+    'DocumentViewSet',
 ]

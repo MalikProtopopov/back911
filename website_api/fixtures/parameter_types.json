@@ -1,0 +1,69 @@
+[
+  {
+    "model": "website_api.parametertype",
+    "pk": 1,
+    "fields": {
+      "code": "tire_radius",
+      "title": "Радиус шины",
+      "description": "Выберите радиус шины автомобиля",
+      "sort_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametertype",
+    "pk": 2,
+    "fields": {
+      "code": "fuel_type",
+      "title": "Тип топлива",
+      "description": "Выберите тип топлива",
+      "sort_order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametertype",
+    "pk": 3,
+    "fields": {
+      "code": "fuel_volume",
+      "title": "Объём топлива",
+      "description": "Укажите объём топлива в литрах",
+      "sort_order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametertype",
+    "pk": 4,
+    "fields": {
+      "code": "lift_height",
+      "title": "Высота подъёма",
+      "description": "Выберите высоту подъёма автовышки",
+      "sort_order": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametertype",
+    "pk": 5,
+    "fields": {
+      "code": "oil_type",
+      "title": "Тип масла",
+      "description": "Выберите тип моторного масла",
+      "sort_order": 5,
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.parametertype",
+    "pk": 6,
+    "fields": {
+      "code": "tank_volume",
+      "title": "Объём бака",
+      "description": "Укажите объём бака в литрах",
+      "sort_order": 6,
+      "is_active": true
+    }
+  }
+]
+

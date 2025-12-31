@@ -1,0 +1,113 @@
+[
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 1,
+    "fields": {
+      "city": 1,
+      "zone_name": "В городе",
+      "location_status": "in_city",
+      "delivery_price": "0.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 2,
+    "fields": {
+      "city": 1,
+      "zone_name": "За городом",
+      "location_status": "out_city",
+      "delivery_price": "1500.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 3,
+    "fields": {
+      "city": 34,
+      "zone_name": "В городе",
+      "location_status": "in_city",
+      "delivery_price": "0.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 4,
+    "fields": {
+      "city": 34,
+      "zone_name": "За МКАД",
+      "location_status": "out_city",
+      "delivery_price": "2500.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 5,
+    "fields": {
+      "city": 79,
+      "zone_name": "В городе",
+      "location_status": "in_city",
+      "delivery_price": "0.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 6,
+    "fields": {
+      "city": 79,
+      "zone_name": "За городом",
+      "location_status": "out_city",
+      "delivery_price": "2000.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 7,
+    "fields": {
+      "city": 35,
+      "zone_name": "В городе",
+      "location_status": "in_city",
+      "delivery_price": "0.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 8,
+    "fields": {
+      "city": 35,
+      "zone_name": "За городом",
+      "location_status": "out_city",
+      "delivery_price": "1500.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 9,
+    "fields": {
+      "city": 46,
+      "zone_name": "В городе",
+      "location_status": "in_city",
+      "delivery_price": "0.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "website_api.deliveryzone",
+    "pk": 10,
+    "fields": {
+      "city": 46,
+      "zone_name": "За городом",
+      "location_status": "out_city",
+      "delivery_price": "1500.00",
+      "is_active": true
+    }
+  }
+]
+

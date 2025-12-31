@@ -1,6 +1,6 @@
 """Serializers for Option and OptionPrice models"""
 from rest_framework import serializers
-from website_api.models import Option, OptionPrice, TechnicCategory
+from website_api.models import Option, OptionPrice, TechnicCategory, ParameterPrice
 
 
 class TechnicCategorySerializer(serializers.ModelSerializer):
@@ -37,16 +37,39 @@ class OptionListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for option lists"""
     service_title = serializers.CharField(source='service.title', read_only=True)
     service_slug = serializers.CharField(source='service.slug', read_only=True)
+    has_parameters = serializers.BooleanField(read_only=True)
+    parameter_types = serializers.SerializerMethodField()
     
     class Meta:
         model = Option
-        fields = ['id', 'title', 'service_id', 'service_title', 'service_slug', 'is_active']
+        fields = [
+            'id', 'title', 'description', 'service_id', 'service_title', 
+            'service_slug', 'has_parameters', 'parameter_types', 'is_active'
+        ]
+    
+    def get_parameter_types(self, obj):
+        """Возвращает типы параметров, если они есть"""
+        if not obj.has_parameters:
+            return []
+        
+        return [
+            {
+                "code": link.parameter_type.code,
+                "title": link.parameter_type.title,
+                "is_required": link.is_required
+            }
+            for link in obj.parameter_types.filter(
+                parameter_type__is_active=True
+            ).select_related('parameter_type')
+        ]
 
 
 class OptionDetailSerializer(serializers.ModelSerializer):
     """Detailed serializer for single option with prices"""
     service_title = serializers.CharField(source='service.title', read_only=True)
     service_slug = serializers.CharField(source='service.slug', read_only=True)
+    has_parameters = serializers.BooleanField(read_only=True)
+    parameter_types = serializers.SerializerMethodField()
     prices = OptionPriceSerializer(many=True, read_only=True)
     
     class Meta:
@@ -54,31 +77,112 @@ class OptionDetailSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
+            'description',
             'service_id',
             'service_title',
             'service_slug',
+            'has_parameters',
+            'parameter_types',
             'is_active',
             'prices',
         ]
+    
+    def get_parameter_types(self, obj):
+        """Возвращает типы параметров с их значениями"""
+        if not obj.has_parameters:
+            return []
+        
+        result = []
+        for link in obj.parameter_types.filter(
+            parameter_type__is_active=True
+        ).select_related('parameter_type'):
+            param_type = link.parameter_type
+            
+            values = [
+                {
+                    "id": value.id,
+                    "value": value.value,
+                    "display_name": value.display_name
+                }
+                for value in param_type.values.filter(is_active=True).order_by('sort_order')
+            ]
+            
+            result.append({
+                "code": param_type.code,
+                "title": param_type.title,
+                "is_required": link.is_required,
+                "values": values
+            })
+        
+        return result
 
 
 class OptionWithCityPriceSerializer(serializers.ModelSerializer):
     """Option serializer with prices for specific city (all prices for all technic categories)"""
     service_title = serializers.CharField(source='service.title', read_only=True)
     service_slug = serializers.CharField(source='service.slug', read_only=True)
+    has_parameters = serializers.BooleanField(read_only=True)
+    parameter_types = serializers.SerializerMethodField()
     prices = serializers.SerializerMethodField()
+    parameter_prices = serializers.SerializerMethodField()
     
     class Meta:
         model = Option
         fields = [
             'id',
             'title',
+            'description',
             'service_id',
             'service_title',
             'service_slug',
-            'is_active',
+            'has_parameters',
+            'parameter_types',
             'prices',
+            'parameter_prices',
+            'is_active',
         ]
+    
+    def get_parameter_types(self, obj):
+        """Возвращает типы параметров с их значениями и ценами для города"""
+        if not obj.has_parameters:
+            return []
+        
+        result = []
+        city = self.context.get('city')
+        
+        for link in obj.parameter_types.filter(
+            parameter_type__is_active=True
+        ).select_related('parameter_type'):
+            param_type = link.parameter_type
+            
+            # Получаем значения с ценами для этого города
+            values = []
+            for value in param_type.values.filter(is_active=True).order_by('sort_order'):
+                price_modifier = "0.00"
+                if city:
+                    param_price = ParameterPrice.objects.filter(
+                        option=obj,
+                        parameter_value=value,
+                        city=city
+                    ).first()
+                    if param_price:
+                        price_modifier = str(param_price.price_modifier)
+                
+                values.append({
+                    "id": value.id,
+                    "value": value.value,
+                    "display_name": value.display_name,
+                    "price_modifier": price_modifier
+                })
+            
+            result.append({
+                "code": param_type.code,
+                "title": param_type.title,
+                "is_required": link.is_required,
+                "values": values
+            })
+        
+        return result
     
     def get_prices(self, obj):
         """Get prices for the city from context, optionally filtered by technic category"""
@@ -103,4 +207,31 @@ class OptionWithCityPriceSerializer(serializers.ModelSerializer):
             })
         
         return result
-
+    
+    def get_parameter_prices(self, obj):
+        """Цены параметров (если есть), сгруппированные по типу параметра"""
+        if not obj.has_parameters:
+            return {}
+        
+        city = self.context.get('city')
+        if not city:
+            return {}
+        
+        # Группируем по типу параметра
+        result = {}
+        
+        for param_price in obj.parameter_prices.filter(
+            city=city
+        ).select_related('parameter_value', 'parameter_value__parameter_type'):
+            param_type_code = param_price.parameter_value.parameter_type.code
+            
+            if param_type_code not in result:
+                result[param_type_code] = []
+            
+            result[param_type_code].append({
+                "value_id": param_price.parameter_value.id,
+                "display_name": param_price.parameter_value.display_name,
+                "price_modifier": str(param_price.price_modifier)
+            })
+        
+        return result

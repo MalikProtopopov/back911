@@ -94,7 +94,10 @@ class OptionViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Option.objects.filter(is_active=True).select_related('service')
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['service', 'service__slug']
+    filterset_fields = {
+        'service': ['exact'],
+        'service__slug': ['exact'],
+    }
     search_fields = ['title']
     ordering_fields = ['title']
     ordering = ['title']
@@ -274,8 +277,6 @@ class TechnicCategoryViewSet(viewsets.ReadOnlyModelViewSet):
     Категории используются для дифференциации цен на опции
     в зависимости от типа автомобиля или техники.
     """
-    queryset = TechnicCategory.objects.all().select_related('service')
+    queryset = TechnicCategory.objects.all()
     serializer_class = TechnicCategorySerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['service', 'service__slug']
 

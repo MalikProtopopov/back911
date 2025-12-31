@@ -2,17 +2,17 @@ from django.db import models
 
 
 class TechnicCategory(models.Model):
-    """Категория техники (легковой, внедорожник и т.д.)"""
+    """Категория техники (легковой, грузовой и т.д.)"""
     
     title = models.CharField(
         max_length=255,
         verbose_name="Название категории"
     )
-    service = models.ForeignKey(
-        'Service',
-        on_delete=models.CASCADE,
-        related_name='technic_categories',
-        verbose_name="Услуга"
+    slug = models.SlugField(
+        max_length=100,
+        blank=True,
+        verbose_name="Slug",
+        help_text="URL-friendly идентификатор"
     )
 
     class Meta:
@@ -21,5 +21,5 @@ class TechnicCategory(models.Model):
         verbose_name_plural = "Категории техники"
 
     def __str__(self):
-        return f"{self.title} ({self.service.title})"
+        return self.title
 

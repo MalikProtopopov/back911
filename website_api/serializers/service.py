@@ -14,6 +14,7 @@ class ServiceContentSerializer(serializers.ModelSerializer):
             'meta_title',
             'meta_description',
             'h1_title',
+            'short_description',
             'description',
             'how_it_works_html',
             'benefits_html',
