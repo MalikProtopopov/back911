@@ -17,6 +17,7 @@ from .option_parameter_type import OptionParameterType
 from .parameter_price import ParameterPrice
 from .delivery_zone import DeliveryZone
 from .price_change_log import PriceChangeLog
+from .document import Document
 
 __all__ = [
     'City',
@@ -38,5 +39,6 @@ __all__ = [
     'ParameterPrice',
     'DeliveryZone',
     'PriceChangeLog',
+    'Document',
 ]
 

@@ -14,6 +14,7 @@ from website_api.views import (
     AppLinkViewSet,
     SeoMetaViewSet,
     LeadViewSet,
+    DocumentViewSet,
 )
 
 # Create router and register viewsets
@@ -28,6 +29,7 @@ router.register(r'contacts', ContactViewSet, basename='contact')
 router.register(r'app-links', AppLinkViewSet, basename='app-link')
 router.register(r'seo-meta', SeoMetaViewSet, basename='seo-meta')
 router.register(r'leads', LeadViewSet, basename='lead')
+router.register(r'documents', DocumentViewSet, basename='document')
 
 urlpatterns = [
     # Custom endpoints (должны быть ДО router.urls, чтобы не перехватывались ViewSet'ами)

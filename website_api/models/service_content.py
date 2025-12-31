@@ -34,8 +34,13 @@ class ServiceContent(models.Model):
     )
     
     # Контент
+    short_description = models.TextField(
+        blank=True,
+        verbose_name="Краткое описание (HTML)",
+        help_text="Краткое описание услуги для карточек и превью"
+    )
     description = models.TextField(
-        verbose_name="Описание (HTML)"
+        verbose_name="Полное описание (HTML)"
     )
     how_it_works_html = models.TextField(
         blank=True,

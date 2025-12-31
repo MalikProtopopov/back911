@@ -52,8 +52,8 @@ urlpatterns = [
     
     path("admin/", admin.site.urls),
     
-    # CKEditor 5 (temporarily disabled)
-    # path("ckeditor5/", include('django_ckeditor_5.urls')),
+    # CKEditor 5
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     
     # API endpoints
     path("api/website/", include("website_api.urls")),

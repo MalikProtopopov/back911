@@ -25,6 +25,7 @@ from .pricing import (
     PriceCalculationRequestSerializer,
     PriceCalculationResponseSerializer,
 )
+from .document import DocumentListSerializer, DocumentDetailSerializer
 
 __all__ = [
     # City
@@ -66,4 +67,7 @@ __all__ = [
     'PriceChangeLogSerializer',
     'PriceCalculationRequestSerializer',
     'PriceCalculationResponseSerializer',
+    # Document
+    'DocumentListSerializer',
+    'DocumentDetailSerializer',
 ]

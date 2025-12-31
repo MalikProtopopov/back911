@@ -1,12 +1,13 @@
 from django.contrib import admin
+from django import forms
 from website_api.models import (
     City, Service, TechnicCategory, Option, OptionPrice,
     CityContent, ServiceContent, Advantage, Metric,
     Contact, AppLink, SeoMeta, Lead,
     ParameterType, ParameterValue, OptionParameterType,
-    ParameterPrice, DeliveryZone, PriceChangeLog
+    ParameterPrice, DeliveryZone, PriceChangeLog, Document
 )
-from website_api.forms import CityContentAdminForm, ServiceContentAdminForm
+from website_api.forms import CityContentAdminForm, ServiceContentAdminForm, DocumentAdminForm
 from website_api.cache import pricing_cache
 
 
@@ -27,6 +28,15 @@ class CityContentInline(admin.StackedInline):
             'classes': ('collapse',)
         }),
     )
+    
+    @property
+    def media(self):
+        """Подключаем Media для CKEditor виджетов"""
+        media = super().media
+        # Добавляем media от формы с CKEditor виджетами
+        if self.form:
+            media = media + self.form().media
+        return media
 
 
 @admin.register(City)
@@ -36,6 +46,15 @@ class CityAdmin(admin.ModelAdmin):
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [CityContentInline]
+    
+    @property
+    def media(self):
+        """Подключаем Media для CKEditor виджетов из inline форм"""
+        media = super().media
+        for inline in self.inlines:
+            if hasattr(inline, 'form') and inline.form:
+                media = media + inline.form().media
+        return media
 
 
 @admin.register(Service)
@@ -130,6 +149,14 @@ class ServiceContentAdmin(admin.ModelAdmin):
     list_filter = ['service', 'city']
     search_fields = ['service__title', 'city__title', 'meta_title']
     
+    @property
+    def media(self):
+        """Подключаем Media для CKEditor виджетов"""
+        media = super().media
+        if self.form:
+            media = media + self.form().media
+        return media
+    
     fieldsets = (
         ('Основная информация', {
             'fields': ('service', 'city'),
@@ -139,7 +166,7 @@ class ServiceContentAdmin(admin.ModelAdmin):
             'fields': ('meta_title', 'meta_description', 'h1_title')
         }),
         ('Контент (HTML)', {
-            'fields': ('description', 'how_it_works_html', 'benefits_html'),
+            'fields': ('short_description', 'description', 'how_it_works_html', 'benefits_html'),
             'description': 'Используйте HTML редактор для форматирования контента'
         }),
         ('Медиа', {
@@ -187,6 +214,42 @@ class SeoMetaAdmin(admin.ModelAdmin):
     list_display = ['page_type', 'full_slug', 'city', 'service', 'is_active']
     list_filter = ['page_type', 'is_active']
     search_fields = ['full_slug', 'title']
+
+
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    """Админка для документов (политика конфиденциальности, оферта и т.д.)"""
+    form = DocumentAdminForm
+    list_display = ['title', 'slug', 'version', 'is_active', 'updated_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['title', 'slug', 'meta_title']
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ['created_at', 'updated_at']
+    
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('title', 'slug', 'version', 'is_active')
+        }),
+        ('SEO', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords', 'h1_title')
+        }),
+        ('Контент (HTML)', {
+            'fields': ('short_description', 'full_description'),
+            'description': 'Используйте HTML редактор для форматирования контента'
+        }),
+        ('Даты', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+    
+    @property
+    def media(self):
+        """Подключаем Media для CKEditor виджетов"""
+        media = super().media
+        if self.form:
+            media = media + self.form().media
+        return media
 
 
 @admin.register(Lead)
