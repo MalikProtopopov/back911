@@ -191,10 +191,24 @@ class SeoMetaAdmin(admin.ModelAdmin):
 
 @admin.register(Lead)
 class LeadAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone', 'city', 'service', 'status', 'created_at']
-    list_filter = ['status', 'city', 'service', 'created_at']
-    search_fields = ['name', 'phone', 'email']
-    readonly_fields = ['created_at']
+    list_display = ['name', 'phone', 'lead_type', 'city', 'service', 'status', 'created_at']
+    list_filter = ['status', 'lead_type', 'city', 'service', 'created_at']
+    search_fields = ['name', 'phone', 'email', 'page_url']
+    readonly_fields = ['created_at', 'processed_at']
+    fieldsets = (
+        ('Данные клиента', {
+            'fields': ('name', 'phone', 'email')
+        }),
+        ('Тип и содержание заявки', {
+            'fields': ('lead_type', 'city', 'service', 'message')
+        }),
+        ('Информация о странице', {
+            'fields': ('page_url', 'source_page', 'utm_source', 'utm_medium', 'utm_campaign')
+        }),
+        ('Статус обработки', {
+            'fields': ('status', 'created_at', 'processed_at')
+        }),
+    )
     
     actions = ['mark_as_processing']
     

@@ -1,5 +1,5 @@
 """Views for Lead model"""
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
@@ -15,16 +15,23 @@ from website_api.serializers import LeadSerializer, LeadCreateSerializer
         Отправить заявку (лид) с корпоративного сайта.
         
         **Обязательные поля:**
-        - `name` - имя клиента (2-100 символов)
         - `phone` - номер телефона (10-20 символов, поддерживает форматы: +7..., 8..., и т.д.)
         
         **Опциональные поля:**
+        - `name` - имя клиента (2-100 символов, если указано)
         - `email` - электронная почта
         - `city` - ID города
         - `service` - ID услуги
         - `message` - сообщение от клиента
-        - `source_page` - URL страницы, с которой отправлена заявка
+        - `lead_type` - тип заявки (service, feedback, partnership). По умолчанию: `service`
+        - `page_url` - полный URL страницы, с которой отправлена заявка (включая query параметры и UTM метки)
+        - `source_page` - путь страницы, с которой отправлена заявка
         - `utm_source`, `utm_medium`, `utm_campaign` - UTM метки для аналитики
+        
+        **Типы заявок:**
+        - `service` - Заявка по услуге от клиента (по умолчанию)
+        - `feedback` - Заявка с предложениями или обратной связью
+        - `partnership` - Заявка на партнерство
         
         **Статус заявки:**
         По умолчанию создается со статусом `new` (новая).
@@ -33,6 +40,8 @@ from website_api.serializers import LeadSerializer, LeadCreateSerializer
         Ограничено 5 заявками в час с одного IP адреса (планируется).
         
         **Примеры использования:**
+        
+        Заявка по услуге:
         ```json
         {
           "name": "Иван Иванов",
@@ -41,9 +50,35 @@ from website_api.serializers import LeadSerializer, LeadCreateSerializer
           "city": 1,
           "service": 2,
           "message": "Нужен шиномонтаж завтра утром",
+          "lead_type": "service",
+          "page_url": "https://911.ru/moskva/shinomontazh/?utm_source=google&utm_medium=cpc",
           "source_page": "/moskva/shinomontazh/",
           "utm_source": "google",
           "utm_medium": "cpc"
+        }
+        ```
+        
+        Заявка с обратной связью:
+        ```json
+        {
+          "name": "Петр Петров",
+          "phone": "+79997654321",
+          "email": "petr@example.com",
+          "message": "Хочу предложить улучшение сервиса",
+          "lead_type": "feedback",
+          "page_url": "https://911.ru/contacts/"
+        }
+        ```
+        
+        Заявка на партнерство:
+        ```json
+        {
+          "name": "ООО Компания",
+          "phone": "+79998887766",
+          "email": "partner@example.com",
+          "message": "Интересует сотрудничество",
+          "lead_type": "partnership",
+          "page_url": "https://911.ru/partnership/"
         }
         ```
         """,
@@ -63,7 +98,8 @@ from website_api.serializers import LeadSerializer, LeadCreateSerializer
         **Требует аутентификации администратора.**
         
         **Фильтрация:**
-        - `status` - статус заявки (new, processing, completed, cancelled)
+        - `status` - статус заявки (new, processing, converted, rejected)
+        - `lead_type` - тип заявки (service, feedback, partnership)
         - `city` - ID города
         - `service` - ID услуги
         
@@ -94,7 +130,8 @@ class LeadViewSet(viewsets.ModelViewSet):
     """
     queryset = Lead.objects.all().select_related('city', 'service')
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'city', 'service']
+    filterset_fields = ['status', 'lead_type', 'city', 'service']
+    permission_classes = [permissions.AllowAny]  # Разрешаем создание заявок без аутентификации
     
     def get_serializer_class(self):
         if self.action == 'create':
