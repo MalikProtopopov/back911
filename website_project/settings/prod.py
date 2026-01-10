@@ -32,6 +32,9 @@ CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv("CORS_ALLOWED_ORI
 
 CORS_ALLOW_CREDENTIALS = True
 
+# CSRF trusted origins for admin panel
+CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "https://api.sluzhba911.com").split(",") if origin.strip()]
+
 # API Host for building absolute URLs in pagination links
 # Используется для формирования ссылок next/previous в пагинации
 API_HOST = os.getenv("API_HOST", "45.144.221.92")
